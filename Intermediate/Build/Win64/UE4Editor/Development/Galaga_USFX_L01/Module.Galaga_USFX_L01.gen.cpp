@@ -7,7 +7,6 @@
 #include "D:/DOCUMENTOS/Galaga_USFX_L01/Intermediate/Build/Win64/UE4Editor/Inc/Galaga_USFX_L01/Evento.gen.cpp"
 #include "D:/DOCUMENTOS/Galaga_USFX_L01/Intermediate/Build/Win64/UE4Editor/Inc/Galaga_USFX_L01/FabricaEnemiga.gen.cpp"
 #include "D:/DOCUMENTOS/Galaga_USFX_L01/Intermediate/Build/Win64/UE4Editor/Inc/Galaga_USFX_L01/FabricaMxCorporation.gen.cpp"
-#include "D:/DOCUMENTOS/Galaga_USFX_L01/Intermediate/Build/Win64/UE4Editor/Inc/Galaga_USFX_L01/Galaga_USFX_L01.init.gen.cpp"
 #include "D:/DOCUMENTOS/Galaga_USFX_L01/Intermediate/Build/Win64/UE4Editor/Inc/Galaga_USFX_L01/Galaga_USFX_L01GameMode.gen.cpp"
 #include "D:/DOCUMENTOS/Galaga_USFX_L01/Intermediate/Build/Win64/UE4Editor/Inc/Galaga_USFX_L01/Galaga_USFX_L01Pawn.gen.cpp"
 #include "D:/DOCUMENTOS/Galaga_USFX_L01/Intermediate/Build/Win64/UE4Editor/Inc/Galaga_USFX_L01/Galaga_USFX_L01Projectile.gen.cpp"

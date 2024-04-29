@@ -23,6 +23,7 @@ protected:
 	virtual void BeginPlay() override;
 private:
 	TArray<ANaveEnemiga*> TANaveEnemigamix;
+public:
 	int level=1	;
 public:	
 	// Called every frame

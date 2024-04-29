@@ -5,6 +5,9 @@
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
 #include "GeneradorNaves.h"
+#include "Stage1.h"
+#include "Stage2.h"
+#include "EscenarioEnginer.h"
 #include "Galaga_USFX_L01GameMode.generated.h"
 
 
@@ -54,13 +57,18 @@ public:
 	
 	ALogros* logro1;  
 	AProyectilEnemigo* proyectil;
+
+	//buiolder
+	AEscenarioEnginer* Enginer;
+	AStage1* stage1;
+	AStage2* stage2;
 public:
 	virtual void Tick(float DeltaTime)override;
 	
 protected:
 	virtual void BeginPlay() override;
 private:
-	int TiempoTranscurrido;
+	int TiempoTranscurrido; 
 };
 
 

@@ -34,7 +34,7 @@ ANaveEnemigaCazaAlfa::ANaveEnemigaCazaAlfa()
 
 void ANaveEnemigaCazaAlfa::Mover(float DeltaTime)
 {
-	ANaveEnemigaCaza::Mover(DeltaTime); 
+	/*ANaveEnemigaCaza::Mover(DeltaTime); 
 	speed = 3;
 	SetActorRotation(FRotator(0, 180, vueltas)); 
 	vueltas+=2;
@@ -53,7 +53,7 @@ void ANaveEnemigaCazaAlfa::Mover(float DeltaTime)
 	if (vueltas % 60<=3) {
 		const FVector FireDirection = FVector(-1.f, 0.f, 0.f);
 		Disparar(FireDirection);
-	}
+	}*/
 
 }
  

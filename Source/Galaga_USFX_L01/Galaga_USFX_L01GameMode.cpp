@@ -52,22 +52,27 @@ void AGalaga_USFX_L01GameMode::BeginPlay()
 		logro1 = World->SpawnActor<ALogros>(FVector(200, 200, 250), FRotator(0, 0, 0));  
 		AGalaga_USFX_L01Pawn* LogroGalaga = Cast<AGalaga_USFX_L01Pawn>(UGameplayStatics::GetPlayerPawn(this, 0)); 
 		LogroGalaga->SetLogro(logro1);
-		/*logro1->ModificarVida("escudo", escudo);
-		logro1->InsertarVida("corazon");*/
-		// xc, yc, zc;
-		//quiero inicializar las naves enemigas
-
-
-		
 
 		///spwn proyectil
 		ANaveEnemigaReabastecimientoBombs* NaveEnemigaTBoms;
 		proyectil = World->SpawnActor<AProyectilEnemigo>(FVector(-1600,-500,250), rotacionNave);
 		NaveEnemigaTBoms = World->SpawnActor<ANaveEnemigaReabastecimientoBombs>(FVector(300, -900, 1500), rotacionNave);
-
 		
 		//se generan aleatoriamente las naves enemigas
 		GeneradorNaves01->generarNave(); 
+		
+
+		//builder
+		stage1= World->SpawnActor<AStage1>(AStage1::StaticClass());
+		stage2 = World->SpawnActor<AStage2>(AStage2::StaticClass());
+		Enginer= World->SpawnActor<AEscenarioEnginer>(AEscenarioEnginer::StaticClass());
+		Enginer->setConstructorEscenario(stage1);
+		Enginer->construirEscenario();
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("se logro"));
+		Enginer->setConstructorEscenario(stage2); 
+		Enginer->construirEscenario(); 
+		
+		
 		
 	}
 }

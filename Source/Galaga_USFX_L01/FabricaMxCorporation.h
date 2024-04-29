@@ -23,7 +23,7 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-	virtual ANaveEnemiga* EnsambladoNave(FString naveOrdenada) PURE_VIRTUAL(AFabricaMxCorporation::EnsambladoNave, return nullptr;);
+	virtual ANaveEnemiga* EnsambladoNave(int naveOrdenada) PURE_VIRTUAL(AFabricaMxCorporation::EnsambladoNave, return nullptr;);
 	ANaveEnemiga* naveVendida;
 	//FstringCagegory??????????????
 

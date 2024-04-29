@@ -14,5 +14,5 @@ class GALAGA_USFX_L01_API AFabricaEnemiga : public AFabricaMxCorporation
 {
 	GENERATED_BODY()
 public:
-	virtual ANaveEnemiga* EnsambladoNave(FString naveOrdenada)override; 
+	virtual ANaveEnemiga* EnsambladoNave(int naveOrdenada)override; 
 };

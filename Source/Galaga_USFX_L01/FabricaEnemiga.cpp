@@ -14,17 +14,17 @@
 #include "NaveEnemigaNodrizaMadre.h"
 #include "NaveEnemigaNodrizaWar.h"
 
-ANaveEnemiga* AFabricaEnemiga::EnsambladoNave(FString naveOrdenada)
+ANaveEnemiga* AFabricaEnemiga::EnsambladoNave(int naveOrdenada)
 {
-	if (naveOrdenada == "caza") {
+	if (naveOrdenada == 0) {
 		return GetWorld()->SpawnActor<ANaveEnemigaCazaAlfa>(ANaveEnemigaCazaAlfa::StaticClass());
 	}
-	else if (naveOrdenada=="delta") {
+	else if (naveOrdenada==1) {
 		return GetWorld()->SpawnActor<ANaveEnemigaCazaDelta>(ANaveEnemigaCazaDelta::StaticClass()); 
 
 	}
 	else {
 		return nullptr;
 	}
-	
+	return nullptr;
 }

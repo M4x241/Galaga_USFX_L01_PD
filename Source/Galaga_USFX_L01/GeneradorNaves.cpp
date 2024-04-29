@@ -33,7 +33,7 @@ void UGeneradorNaves::generarNave()
 {
 	UWorld* World = GetWorld();
 	//claseEnemiga = ANaveEnemiga::StaticClass();
-	ANaveEnemigaCazaAlfa* NaveEnemigaTAlfa;
+	/*ANaveEnemigaCazaAlfa* NaveEnemigaTAlfa;
 	ANaveEnemigaCazaDelta* NaveEnemigaTDelta;
 	ANaveEnemigaTransporteLigero* NaveEnemigaTLigero;
 	ANaveEnemigaTransportePesado* NaveEnemigaTPesado;
@@ -41,7 +41,7 @@ void UGeneradorNaves::generarNave()
 	ANaveEnemigaEspiaCentral* NaveEnemigaTCentral;
 	ANaveEnemigaNodrizaMadre* NaveEnemigaTMadre;
 	ANaveEnemigaNodrizaWar* NaveEnemigaTWar;
-	ANaveEnemigaReabastecimientoFuel* NaveEnemigaTFuel;
+	ANaveEnemigaReabastecimientoFuel* NaveEnemigaTFuel;*/
 
 	if (World) {
 		FVector posicionNave = FVector(rand() % 1000 - 500, rand() % 1000 - 500, 200);
@@ -50,28 +50,35 @@ void UGeneradorNaves::generarNave()
 		AFabricaMxCorporation* fabrica = World->SpawnActor<AFabricaEnemiga>(AFabricaEnemiga::StaticClass());
 		ANaveEnemiga* nave;
 		//GEngine->AddOnScreenDebugMessage(-5, 10.0f, FColor::Blue, TEXT("TE CREO: "));
-		nave = fabrica->EnsambladoNave("delta");
-		if (nave) {
-			//World->SpawnActor<ANaveEnemigaCaza>(nave->GetClass(), FVector(0, 0, 250), FRotator(0, 0, 0));
-			GEngine->AddOnScreenDebugMessage(-5, 10.0f, FColor::Blue, TEXT("TE CREO: "));
-		}
-		else {
-			//UE_LOG(LogTemp, Warning, TEXT("EnsambladoNave returned nullptr!"));		
-			GEngine->AddOnScreenDebugMessage(-5, 10.0f, FColor::Blue, TEXT("NO SE CREO: "));
-
-		}
-
-
-
+		//nave = fabrica->EnsambladoNave("delta");
+		//if (nave) {
+		//	//World->SpawnActor<ANaveEnemigaCaza>(nave->GetClass(), FVector(0, 0, 250), FRotator(0, 0, 0));
+		//	GEngine->AddOnScreenDebugMessage(-5, 10.0f, FColor::Blue, TEXT("TE CREO: "));
+		//}
+		//else {
+		//	//UE_LOG(LogTemp, Warning, TEXT("EnsambladoNave returned nullptr!"));		
+		//	GEngine->AddOnScreenDebugMessage(-5, 10.0f, FColor::Blue, TEXT("NO SE CREO: "));
+		//}
 
 		int tipNave = 0;
-		for (int i = 0; i < 6; i++) {//4
-			if (nave) {
-				World->SpawnActor<ANaveEnemiga>(nave->GetClass(), FVector(0, 0+200*i, 200), FRotator(0, 0, 0));
+		for (int i = 0; i < 4; i++) {//4
+			/*if (nave) {
+				World->SpawnActor<ANaveEnemiga>(nave->GetClass(), FVector(0, 0+200*i, 200), FRotator(0, 0, 0));1200 + 100 * i,-100+100 * j, 200
 				GEngine->AddOnScreenDebugMessage(-5, 10.0f, FColor::Blue, TEXT("TE CREO: "));
-			}
-			tipNave = rand() % 8;
-			switch (tipNave) {
+			}*/
+			
+			//if (nave) {
+				for (int j = 0; j < 4; j++) {
+					tipNave = rand() % 2;
+					nave = fabrica->EnsambladoNave(tipNave);
+					if (nave) {
+						nave=World->SpawnActor<ANaveEnemigaCaza>(nave->GetClass(), FVector(1200 + 200 * i, -100 + 200 * j, 200), FRotator(0, 0, 0));
+						TANaveEnemigamix.Push(nave);
+					}
+
+				}
+			//}
+			/*switch (tipNave) {
 			case 0:
 				for (int j = 0; j < 6; j++) {
 					NaveEnemigaTAlfa = World->SpawnActor<ANaveEnemigaCazaAlfa>(posicionNave + FVector(150 * i, 200 * j, 0), rotacionNave);
@@ -129,7 +136,7 @@ void UGeneradorNaves::generarNave()
 				break;
 			default: break;
 
-			}
+			}*/
 		}
 		
 	}
@@ -138,16 +145,19 @@ void UGeneradorNaves::generarNave()
 
 void UGeneradorNaves::NotEnemy()
 {
-	for (int i = 0; i < TANaveEnemigamix.Num(); i++)
+	int totalShips = TANaveEnemigamix.Num();
+	//GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Blue, FString::Printf(TEXT("Total Ships: %d"), totalShips)); 
+
+	for (int i = TANaveEnemigamix.Num() - 1; i >= 0; i--) 
 	{
-		if (TANaveEnemigamix[i]->IsPendingKill()) {
+		if (TANaveEnemigamix[i]->IsPendingKill()) { 
+			GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Blue, TEXT("Hola"));
 			TANaveEnemigamix.RemoveAt(i); 
 		}
 	}
 	if (TANaveEnemigamix.Num() == 0 ) {
 		level++;
-		for (int i = 0; i < level; i++)
-		{
+		for (int i = 0; i < level; i++){
 			generarNave(); 
 		}
 	}
