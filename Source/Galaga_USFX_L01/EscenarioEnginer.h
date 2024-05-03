@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "BConstructorEscenario.h"
+#include "Stage1.h"
 #include "EscenarioEnginer.generated.h"
 
 UCLASS()
@@ -16,7 +16,7 @@ public:
 	// Sets default values for this actor's properties
 	AEscenarioEnginer();
 private:
-	IBConstructorEscenario* ConstructorEscenario;
+	AStage1* stage;
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -25,8 +25,8 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 	void setConstructorEscenario(AActor* _constructor);
-	void construirEscenario();
-	void Escenario1();
-	void Escenario2();
-	void Escenario3();
+	void construirEscenario1();
+	void construirEscenario2();
+	void construirEscenario3();
+	void construirEscenario4();
 };

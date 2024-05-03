@@ -5,6 +5,9 @@
 #include "CoreMinimal.h"
 #include "Components/SceneComponent.h"
 #include "NaveEnemiga.h"
+#include "Stage1.h"
+#include "EscenarioEnginer.h"
+#include "HighScore.h"
 #include "GeneradorNaves.generated.h"
 class ANaveEnemiga;
 
@@ -25,6 +28,11 @@ private:
 	TArray<ANaveEnemiga*> TANaveEnemigamix;
 public:
 	int level=1	;
+	//buiolder
+	AEscenarioEnginer* Enginer;
+	AStage1* stage1;
+	bool pase=true;
+	AHighScore* highScore;
 public:	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;

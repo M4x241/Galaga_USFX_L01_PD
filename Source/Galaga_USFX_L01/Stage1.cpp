@@ -2,7 +2,8 @@
 
 
 #include "Stage1.h"
-#include "NaveEnemigaTransportePesado.h"
+#include "Escenario.h"
+#include "Bomba.h"
 
 // Sets default values
 AStage1::AStage1()
@@ -16,8 +17,9 @@ AStage1::AStage1()
 void AStage1::BeginPlay()
 {
 	Super::BeginPlay();
+	Escenario = GetWorld()->SpawnActor<AEscenario>(AEscenario::StaticClass());
+	Escenario->AttachToActor(this, FAttachmentTransformRules::KeepRelativeTransform);
 
-	
 }
 
 // Called every frame
@@ -27,43 +29,39 @@ void AStage1::Tick(float DeltaTime)
 
 }
 
-void AStage1::BuildMuro()
+void AStage1::BuildEscenario1()
 {
-	ANaveEnemigaTransportePesado* Barrera = GetWorld()->SpawnActor<ANaveEnemigaTransportePesado>(FVector(0, 0, 300), FRotator(0, 0, 0));
+	if (!Escenario) {
+		UE_LOG(LogTemp, Warning, TEXT("Error con el los planos"));
+		return;
+	}
+	Escenario->SetEscenario1();
 }
 
-void AStage1::BuildBombaTrampa()
+void AStage1::BuildEscenario2()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("BuildBombaTrampaescenario1"));
+	if (!Escenario) {
+		UE_LOG(LogTemp, Warning, TEXT("Error con el los planos"));
+		return;
+	}
+	Escenario->SetEscenario2();
 }
 
-void AStage1::BuildMurosMovedizos()
+void AStage1::BuildEscenario3()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("BuildMurosMovedizosescenario1"));
+	if (!Escenario) {
+		UE_LOG(LogTemp, Warning, TEXT("Error con el los planos"));
+		return;
+	}
+	Escenario->SetEscenario3();
 }
 
-void AStage1::BuildMuroPuas()
+void AStage1::BuildEscenario4()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("BuildMuroPuasescenario1"));
-}
-
-void AStage1::BuildPortales()
-{
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("BuildPortalesescenario1"));
-}
-
-void AStage1::BuildItem()
-{
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("BuildItemescenario1"));
-}
-
-void AStage1::TipoEscenario(UStaticMesh)
-{
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("TipoEscenarioescenario1"));
-}
-
-void AStage1::BuildSuelo()
-{
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("BuildSueloescenario1"));
+	if (!Escenario) {
+		UE_LOG(LogTemp, Warning, TEXT("Error con el los planos"));
+		return;
+	}
+	Escenario->SetEscenario4();
 }
 

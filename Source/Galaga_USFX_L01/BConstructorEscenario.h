@@ -22,12 +22,8 @@ class GALAGA_USFX_L01_API IBConstructorEscenario
 	 
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
-	virtual void BuildMuro() = 0;
-	virtual void BuildBombaTrampa() = 0;
-	virtual void BuildMurosMovedizos() = 0;
-	virtual void BuildMuroPuas() = 0;
-	virtual void BuildPortales() = 0;
-	virtual void BuildItem() = 0;
-	virtual void TipoEscenario(UStaticMesh) = 0;
-	virtual void BuildSuelo() = 0;
+	virtual void BuildEscenario1() = 0;
+	virtual void BuildEscenario2() = 0;
+	virtual void BuildEscenario3() = 0;
+	virtual void BuildEscenario4() = 0;
 };

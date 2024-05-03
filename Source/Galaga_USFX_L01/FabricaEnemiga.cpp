@@ -23,6 +23,18 @@ ANaveEnemiga* AFabricaEnemiga::EnsambladoNave(int naveOrdenada)
 		return GetWorld()->SpawnActor<ANaveEnemigaCazaDelta>(ANaveEnemigaCazaDelta::StaticClass()); 
 
 	}
+	else if (naveOrdenada == 2) {
+		return GetWorld()->SpawnActor<ANaveEnemigaTransporteLigero>(ANaveEnemigaTransporteLigero::StaticClass());
+
+	}
+	else if (naveOrdenada == 3) {
+		return GetWorld()->SpawnActor<ANaveEnemigaTransportePesado>(ANaveEnemigaTransportePesado::StaticClass());
+
+	}
+	else if (naveOrdenada == 4) {
+		return GetWorld()->SpawnActor<ANaveEnemigaEspiaScout>(ANaveEnemigaEspiaScout::StaticClass());
+
+	}
 	else {
 		return nullptr;
 	}

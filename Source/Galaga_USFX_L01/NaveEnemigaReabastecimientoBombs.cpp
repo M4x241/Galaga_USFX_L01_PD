@@ -26,15 +26,12 @@ void ANaveEnemigaReabastecimientoBombs::Mover(float DeltaTime)
 		AleY = rand() % 3600 - 1800;
 		UWorld* const World = GetWorld();
 		if (World) {
-			//tmpBomb += GetWorld()->DeltaTimeSeconds;
-			//if (tmpBomb >= tmpSuelto) {
-			ABomba* bomb;
+			/*ABomba* bomb;
 			FVector posicin = GetActorLocation() + FVector(-50, 0, -50);
 			FRotator rotat = FRotator(0, 0, 0);
 			bomb = GetWorld()->SpawnActor<ABomba>(posicin, rotat);
 			tmpBomb = 0;
-			tmpSuelto = rand() % 3 + 3;
-			//}
+			tmpSuelto = rand() % 3 + 3;*/
 		}
 	}
 	else {

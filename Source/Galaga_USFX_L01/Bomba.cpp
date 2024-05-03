@@ -32,7 +32,7 @@ ABomba::ABomba()
 	ProjectileMovement->MaxSpeed = 0.f;
 	ProjectileMovement->bRotationFollowsVelocity = true;
 	ProjectileMovement->bShouldBounce = false;
-	ProjectileMovement->ProjectileGravityScale = 3.f;
+	ProjectileMovement->ProjectileGravityScale = 0.f;
 
 	/*mallabala->BodyInstance.SetCollisionProfileName("Projectile"); 
 	mallabala->OnComponentHit.AddDynamic(this, &ABomba::OnHit);
@@ -56,7 +56,7 @@ void ABomba::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveC
 	// Destroy all actors within explosion radius
 	TArray<AActor*> ActorsToDestroy;
 	FVector BombLocation = GetActorLocation();
-	float ExplosionRadius = 5.0f; // Adjust this value as needed
+	float ExplosionRadius = 200.0f; // Adjust this value as needed
 	/*OtherActor = Cast<AGalaga_USFX_L01Pawn>(OtherActor);
 	if (OtherActor) {
 		OtherActor->Destroy();
@@ -90,7 +90,7 @@ void ABomba::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveC
 void ABomba::aumentarTamano()
 {
 	if (IncTam) {
-		for (int i = 0; i <= 50; i++) {
+		for (int i = 0; i <= 80; i++) {
 			SetActorScale3D(FVector(i, i, i));
 		}
 		IncTam = false;
@@ -105,6 +105,8 @@ void ABomba::ActCrecimiento() {
 void ABomba::BeginPlay() 
 {
 	Super::BeginPlay(); 
+	FTimerHandle TimerHandle;
+	GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &ABomba::tiempoBomba, 2.0f, false);
 }
 
 // Called every frame
@@ -115,5 +117,10 @@ void ABomba::Tick(float DeltaTime)
 	//tmp += GetWorld()->DeltaTimeSeconds;
 	//DestroyBomba();
 
+}
+
+void ABomba::tiempoBomba()
+{
+	ProjectileMovement->ProjectileGravityScale = 3.f;
 }
 

@@ -27,42 +27,47 @@ void AEscenarioEnginer::Tick(float DeltaTime)
 
 void AEscenarioEnginer::setConstructorEscenario(AActor* _constructor)
 {
-	ConstructorEscenario = Cast<IBConstructorEscenario>(_constructor);  
-	if (!ConstructorEscenario) 
+	stage = Cast<AStage1>(_constructor);  
+	if (!stage) 
 	{
-		UE_LOG(LogTemp, Warning, TEXT("No se pudo castear el constructor de escenario")); 
+		GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Red, TEXT("¡Cast no válido! Consulte Registro de salida para obtener más detalles."));
+		UE_LOG(LogTemp, Error, TEXT("setConstructorEsceneario():¡El actor no es un stage! "));
 	}	
 }
 
-void AEscenarioEnginer::construirEscenario()
+void AEscenarioEnginer::construirEscenario1()
 {
-	if (ConstructorEscenario)
+	if (!stage)
 	{
-		ConstructorEscenario->BuildMuro(); 
-		ConstructorEscenario->BuildBombaTrampa(); 
+		UE_LOG(LogTemp, Warning, TEXT("No se pudo construir el escenario"));
 	}
-	else
+	stage->BuildEscenario1();
+}
+
+void AEscenarioEnginer::construirEscenario2()
+{
+	if (!stage)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("No se pudo construir el escenario")); 
+		UE_LOG(LogTemp, Warning, TEXT("No se pudo construir el escenario"));
 	}
+	stage->BuildEscenario2();
 }
 
-void AEscenarioEnginer::Escenario1()
+void AEscenarioEnginer::construirEscenario3()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Escenario1"));
-	ConstructorEscenario->BuildMuro();
+	if (!stage)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("No se pudo construir el escenario"));
+	}
+	stage->BuildEscenario3();
 }
 
-void AEscenarioEnginer::Escenario2()
+void AEscenarioEnginer::construirEscenario4()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Escenario2"));
-	ConstructorEscenario->BuildBombaTrampa();
-}
-
-void AEscenarioEnginer::Escenario3()
-{
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Escenario3"));
-	ConstructorEscenario->BuildMuro();
-	ConstructorEscenario->BuildBombaTrampa();
+	if (!stage)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("No se pudo construir el escenario"));
+	}
+	stage->BuildEscenario4();
 }
 

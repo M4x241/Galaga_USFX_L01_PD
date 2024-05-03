@@ -61,82 +61,18 @@ void UGeneradorNaves::generarNave()
 		//}
 
 		int tipNave = 0;
-		for (int i = 0; i < 4; i++) {//4
-			/*if (nave) {
-				World->SpawnActor<ANaveEnemiga>(nave->GetClass(), FVector(0, 0+200*i, 200), FRotator(0, 0, 0));1200 + 100 * i,-100+100 * j, 200
-				GEngine->AddOnScreenDebugMessage(-5, 10.0f, FColor::Blue, TEXT("TE CREO: "));
-			}*/
+		for (int i = 0; i < 3; i++) {//4
 			
-			//if (nave) {
-				for (int j = 0; j < 4; j++) {
-					tipNave = rand() % 2;
+				for (int j = 0; j < 3; j++) {
+					tipNave = rand() % 4;
 					nave = fabrica->EnsambladoNave(tipNave);
 					if (nave) {
-						nave=World->SpawnActor<ANaveEnemigaCaza>(nave->GetClass(), FVector(1200 + 200 * i, -100 + 200 * j, 200), FRotator(0, 0, 0));
+						nave=World->SpawnActor<ANaveEnemiga>(nave->GetClass(), FVector(1200 + 200 * i, -100 + 200 * j, 200), FRotator(0, 0, 0));
 						TANaveEnemigamix.Push(nave);
 					}
 
 				}
-			//}
-			/*switch (tipNave) {
-			case 0:
-				for (int j = 0; j < 6; j++) {
-					NaveEnemigaTAlfa = World->SpawnActor<ANaveEnemigaCazaAlfa>(posicionNave + FVector(150 * i, 200 * j, 0), rotacionNave);
-					TANaveEnemigamix.Push(NaveEnemigaTAlfa);
-				}
-
-				break;
-			case 1:
-				for (int j = 0; j < 6; j++) {
-					NaveEnemigaTDelta = World->SpawnActor<ANaveEnemigaCazaDelta>(posicionNave + FVector(150 * i, 200 * j, 0), rotacionNave);
-					TANaveEnemigamix.Push(NaveEnemigaTDelta);
-				}
-				break;
-			case 2:
-				for (int j = 0; j < 6; j++) {
-					NaveEnemigaTLigero = World->SpawnActor<ANaveEnemigaTransporteLigero>(posicionNave + FVector(150 * i, 200 * j, 0), rotacionNave);
-					TANaveEnemigamix.Push(NaveEnemigaTLigero);
-				}
-				break;
-			case 3:
-				for (int j = 0; j < 6; j++) {
-					NaveEnemigaTPesado = World->SpawnActor<ANaveEnemigaTransportePesado>(posicionNave + FVector(150 * i, 200 * j, 0), rotacionNave);
-					TANaveEnemigamix.Push(NaveEnemigaTPesado);
-				}
-				break;
-			case 4:
-				for (int j = 0; j < 6; j++) {
-					NaveEnemigaTScout = World->SpawnActor<ANaveEnemigaEspiaScout>(posicionNave + FVector(150 * i, 200 * j, 0), rotacionNave);
-					TANaveEnemigamix.Push(NaveEnemigaTScout);
-				}
-				break;
-			case 5:
-				for (int j = 0; j < 6; j++) {
-					NaveEnemigaTCentral = World->SpawnActor<ANaveEnemigaEspiaCentral>(posicionNave + FVector(150 * i, 200 * j, 0), rotacionNave);
-					TANaveEnemigamix.Push(NaveEnemigaTCentral);
-				}
-				break;
-			case 6:
-				for (int j = 0; j < 6; j++) {
-					NaveEnemigaTMadre = World->SpawnActor<ANaveEnemigaNodrizaMadre>(posicionNave + FVector(150 * i, 200 * j, 0), rotacionNave);
-					TANaveEnemigamix.Push(NaveEnemigaTMadre);
-				}
-				break;
-			case 7:
-				for (int j = 0; j < 6; j++) {
-					NaveEnemigaTWar = World->SpawnActor<ANaveEnemigaNodrizaWar>(posicionNave + FVector(150 * i, 200 * j, 0), rotacionNave);
-					TANaveEnemigamix.Push(NaveEnemigaTWar);
-				}
-				break;
-			case 8:
-				for (int j = 0; j < 6; j++) {
-					NaveEnemigaTFuel = World->SpawnActor<ANaveEnemigaReabastecimientoFuel>(posicionNave + FVector(150 * i, 200 * j, 0), rotacionNave);
-					TANaveEnemigamix.Push(NaveEnemigaTFuel);
-				}
-				break;
-			default: break;
-
-			}*/
+			
 		}
 		
 	}
@@ -157,6 +93,7 @@ void UGeneradorNaves::NotEnemy()
 	}
 	if (TANaveEnemigamix.Num() == 0 ) {
 		level++;
+		pase = true;
 		for (int i = 0; i < level; i++){
 			generarNave(); 
 		}
@@ -168,7 +105,16 @@ void UGeneradorNaves::NotEnemy()
 void UGeneradorNaves::BeginPlay()
 {
 	Super::BeginPlay();
-
+	//builder
+	UWorld* World = GetWorld();
+	if (World) { 
+		highScore = GetWorld()->SpawnActor<AHighScore>(AHighScore::StaticClass());
+		stage1 = World->SpawnActor<AStage1>(AStage1::StaticClass());
+		stage1->setHighScore(highScore);
+		Enginer = World->SpawnActor<AEscenarioEnginer>(AEscenarioEnginer::StaticClass());
+		Enginer->setConstructorEscenario(stage1);
+	}
+	
 	// ...
 	
 }
@@ -179,6 +125,21 @@ void UGeneradorNaves::TickComponent(float DeltaTime, ELevelTick TickType, FActor
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 	NotEnemy();
+	if (Enginer) {
+		if (level == 1 && pase) {
+			Enginer->construirEscenario1(); pase = false;
+		}
+		else if (level == 2 && pase){
+			Enginer->construirEscenario2(); pase = false;
+		}
+		else if (level == 3 && pase)
+		{
+			Enginer->construirEscenario3(); pase = false;
+		}
+		else if (level == 4 && pase) {
+			Enginer->construirEscenario4(); pase = false;
+		}
+	}
 	// ...
 }
 

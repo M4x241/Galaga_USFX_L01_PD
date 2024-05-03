@@ -8,15 +8,31 @@
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+class UPrimitiveComponent;
+class AActor;
+struct FHitResult;
+struct FVector;
 #ifdef GALAGA_USFX_L01_Muro_generated_h
 #error "Muro.generated.h already included, missing '#pragma once' in Muro.h"
 #endif
 #define GALAGA_USFX_L01_Muro_generated_h
 
-#define Galaga_USFX_L01_Source_Galaga_USFX_L01_Muro_h_12_SPARSE_DATA
-#define Galaga_USFX_L01_Source_Galaga_USFX_L01_Muro_h_12_RPC_WRAPPERS
-#define Galaga_USFX_L01_Source_Galaga_USFX_L01_Muro_h_12_RPC_WRAPPERS_NO_PURE_DECLS
-#define Galaga_USFX_L01_Source_Galaga_USFX_L01_Muro_h_12_INCLASS_NO_PURE_DECLS \
+#define Galaga_USFX_L01_Source_Galaga_USFX_L01_Muro_h_15_SPARSE_DATA
+#define Galaga_USFX_L01_Source_Galaga_USFX_L01_Muro_h_15_RPC_WRAPPERS \
+ \
+	DECLARE_FUNCTION(execOnOverlapBegin); \
+	DECLARE_FUNCTION(execNotifyHit); \
+	DECLARE_FUNCTION(execOnHit);
+
+
+#define Galaga_USFX_L01_Source_Galaga_USFX_L01_Muro_h_15_RPC_WRAPPERS_NO_PURE_DECLS \
+ \
+	DECLARE_FUNCTION(execOnOverlapBegin); \
+	DECLARE_FUNCTION(execNotifyHit); \
+	DECLARE_FUNCTION(execOnHit);
+
+
+#define Galaga_USFX_L01_Source_Galaga_USFX_L01_Muro_h_15_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAMuro(); \
 	friend struct Z_Construct_UClass_AMuro_Statics; \
@@ -25,7 +41,7 @@ public: \
 	DECLARE_SERIALIZER(AMuro)
 
 
-#define Galaga_USFX_L01_Source_Galaga_USFX_L01_Muro_h_12_INCLASS \
+#define Galaga_USFX_L01_Source_Galaga_USFX_L01_Muro_h_15_INCLASS \
 private: \
 	static void StaticRegisterNativesAMuro(); \
 	friend struct Z_Construct_UClass_AMuro_Statics; \
@@ -34,7 +50,7 @@ public: \
 	DECLARE_SERIALIZER(AMuro)
 
 
-#define Galaga_USFX_L01_Source_Galaga_USFX_L01_Muro_h_12_STANDARD_CONSTRUCTORS \
+#define Galaga_USFX_L01_Source_Galaga_USFX_L01_Muro_h_15_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API AMuro(const FObjectInitializer& ObjectInitializer); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(AMuro) \
@@ -47,7 +63,7 @@ private: \
 public:
 
 
-#define Galaga_USFX_L01_Source_Galaga_USFX_L01_Muro_h_12_ENHANCED_CONSTRUCTORS \
+#define Galaga_USFX_L01_Source_Galaga_USFX_L01_Muro_h_15_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	NO_API AMuro(AMuro&&); \
@@ -58,28 +74,28 @@ public: \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(AMuro)
 
 
-#define Galaga_USFX_L01_Source_Galaga_USFX_L01_Muro_h_12_PRIVATE_PROPERTY_OFFSET
-#define Galaga_USFX_L01_Source_Galaga_USFX_L01_Muro_h_9_PROLOG
-#define Galaga_USFX_L01_Source_Galaga_USFX_L01_Muro_h_12_GENERATED_BODY_LEGACY \
+#define Galaga_USFX_L01_Source_Galaga_USFX_L01_Muro_h_15_PRIVATE_PROPERTY_OFFSET
+#define Galaga_USFX_L01_Source_Galaga_USFX_L01_Muro_h_12_PROLOG
+#define Galaga_USFX_L01_Source_Galaga_USFX_L01_Muro_h_15_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	Galaga_USFX_L01_Source_Galaga_USFX_L01_Muro_h_12_PRIVATE_PROPERTY_OFFSET \
-	Galaga_USFX_L01_Source_Galaga_USFX_L01_Muro_h_12_SPARSE_DATA \
-	Galaga_USFX_L01_Source_Galaga_USFX_L01_Muro_h_12_RPC_WRAPPERS \
-	Galaga_USFX_L01_Source_Galaga_USFX_L01_Muro_h_12_INCLASS \
-	Galaga_USFX_L01_Source_Galaga_USFX_L01_Muro_h_12_STANDARD_CONSTRUCTORS \
+	Galaga_USFX_L01_Source_Galaga_USFX_L01_Muro_h_15_PRIVATE_PROPERTY_OFFSET \
+	Galaga_USFX_L01_Source_Galaga_USFX_L01_Muro_h_15_SPARSE_DATA \
+	Galaga_USFX_L01_Source_Galaga_USFX_L01_Muro_h_15_RPC_WRAPPERS \
+	Galaga_USFX_L01_Source_Galaga_USFX_L01_Muro_h_15_INCLASS \
+	Galaga_USFX_L01_Source_Galaga_USFX_L01_Muro_h_15_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define Galaga_USFX_L01_Source_Galaga_USFX_L01_Muro_h_12_GENERATED_BODY \
+#define Galaga_USFX_L01_Source_Galaga_USFX_L01_Muro_h_15_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	Galaga_USFX_L01_Source_Galaga_USFX_L01_Muro_h_12_PRIVATE_PROPERTY_OFFSET \
-	Galaga_USFX_L01_Source_Galaga_USFX_L01_Muro_h_12_SPARSE_DATA \
-	Galaga_USFX_L01_Source_Galaga_USFX_L01_Muro_h_12_RPC_WRAPPERS_NO_PURE_DECLS \
-	Galaga_USFX_L01_Source_Galaga_USFX_L01_Muro_h_12_INCLASS_NO_PURE_DECLS \
-	Galaga_USFX_L01_Source_Galaga_USFX_L01_Muro_h_12_ENHANCED_CONSTRUCTORS \
+	Galaga_USFX_L01_Source_Galaga_USFX_L01_Muro_h_15_PRIVATE_PROPERTY_OFFSET \
+	Galaga_USFX_L01_Source_Galaga_USFX_L01_Muro_h_15_SPARSE_DATA \
+	Galaga_USFX_L01_Source_Galaga_USFX_L01_Muro_h_15_RPC_WRAPPERS_NO_PURE_DECLS \
+	Galaga_USFX_L01_Source_Galaga_USFX_L01_Muro_h_15_INCLASS_NO_PURE_DECLS \
+	Galaga_USFX_L01_Source_Galaga_USFX_L01_Muro_h_15_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

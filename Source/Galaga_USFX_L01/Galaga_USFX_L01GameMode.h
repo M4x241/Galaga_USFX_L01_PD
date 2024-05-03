@@ -5,9 +5,6 @@
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
 #include "GeneradorNaves.h"
-#include "Stage1.h"
-#include "Stage2.h"
-#include "EscenarioEnginer.h"
 #include "Galaga_USFX_L01GameMode.generated.h"
 
 
@@ -36,34 +33,23 @@ class AGalaga_USFX_L01GameMode : public AGameModeBase
 
 public:
 	AGalaga_USFX_L01GameMode();
-public:
 	
 	UGeneradorNaves* GeneradorNaves01;
 	UPROPERTY(EditAnywhere)
 	int escudo=2;
 
 public:
-
-
-
-	//ANaveEnemigaTransporte* NaveEnemigaTransporte01;
 	TArray<ANaveEnemigaCaza*> TANaveEnemigaCaza;
 	TArray<ANaveEnemigaCazaAlfa*> TANaveEnemigaCazaAlfa;
 	TArray<ANaveEnemigaCazaDelta*> TANaveEnemigaCazaDelta;
 	TArray<ANaveEnemigaTransporte*> TANaveEnemigaTransporte;
 
-
 	ANaveEnemigaCaza* NaveEnemigaCaza01;
-	
 	ALogros* logro1;  
 	AProyectilEnemigo* proyectil;
 
-	//buiolder
-	AEscenarioEnginer* Enginer;
-	AStage1* stage1;
-	AStage2* stage2;
 public:
-	virtual void Tick(float DeltaTime)override;
+	virtual void Tick(float DeltaTime) override;
 	
 protected:
 	virtual void BeginPlay() override;

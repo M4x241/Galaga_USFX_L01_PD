@@ -44,6 +44,7 @@ AGalaga_USFX_L01Pawn::AGalaga_USFX_L01Pawn()
 	CameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("TopDownCamera"));
 	CameraComponent->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
 	CameraComponent->bUsePawnControlRotation = false;	// Camera does not rotate relative to arm
+	CameraComponent->bLockToHmd = false;
 
 	// Movement
 	MoveSpeed = 1000.0f;
@@ -53,17 +54,6 @@ AGalaga_USFX_L01Pawn::AGalaga_USFX_L01Pawn()
 	bCanFire = true;
 
 	MyInventory = CreateDefaultSubobject<UInventarioComponent>("MyInventory");
-	//haz una referencia a logro1 creado en el gamemode
-	//logro1 = NewObject<ALogros>(this); 
-	//logro1= Cast<ALogros>(UGameplayStatics::GetPlayerController(GetWorld(), 0));
-	/*if (logro1)
-	{
-		logro1->ModificarVida("escudo", 3);
-	}
-	else
-	{
-		UE_LOG(LogTemp, Error, TEXT("No se pudo crear un objeto Logros."));
-	}*/
 
 	barrera1 = CreateDefaultSubobject<UActivacionBarrera>(TEXT("barrera")); 
 	movimiento1 = CreateDefaultSubobject<UMovimientoABase>(TEXT("movimiento"));
@@ -145,9 +135,6 @@ void AGalaga_USFX_L01Pawn::CamaraCambio()
 		CameraBoom->TargetArmLength = 0.f;
 		CameraBoom->SetRelativeRotation(FRotator(-80.f, 0.f, 0.f));
 		CameraComponent->bUsePawnControlRotation = false;
-		
-
-		
 
 	}
 	else {
@@ -325,9 +312,21 @@ void AGalaga_USFX_L01Pawn::Tick(float DeltaSeconds)
 	//posicionNave = GetPa();
 	const float ForwardValue = GetInputAxisValue(MoveForwardBinding);
 	const float RightValue = GetInputAxisValue(MoveRightBinding);
-
-	//const float diagE = GetInputAxisValue("DiagonalE");
-	//const float DiagonalX = GetInputAxisValue(MoveRightBinding);
+	/*if (ForwardValue != 0 || RightValue != 0)
+	{
+		if (RightValue == 1) {
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("RightValue: ") + FString::SanitizeFloat(RightValue));
+		}
+		else if (RightValue == -1) {
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("RightValue: ") + FString::SanitizeFloat(RightValue));
+		}
+		if (ForwardValue == 1) {
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("ForwardValue: ") + FString::SanitizeFloat(ForwardValue));
+		}
+		else if (ForwardValue == -1) {
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("ForwardValue: ") + FString::SanitizeFloat(ForwardValue));
+		}
+	}*/
 
 	// Clamp max size so that (X=1, Y=1) doesn't cause faster movement in diagonal directions
 	const FVector MoveDirection = FVector(ForwardValue, RightValue, 0.f).GetClampedToMaxSize(1.0f);
@@ -350,6 +349,7 @@ void AGalaga_USFX_L01Pawn::Tick(float DeltaSeconds)
 			const FVector Normal2D = Hit.Normal.GetSafeNormal2D();
 			const FVector Deflection = FVector::VectorPlaneProject(Movement, Normal2D) * (1.f - Hit.Time);
 			RootComponent->MoveComponent(Deflection, NewRotation, true);
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Hit: ") + Hit.Normal.ToString());
 		}
 	}
 	// Create fire direction vector

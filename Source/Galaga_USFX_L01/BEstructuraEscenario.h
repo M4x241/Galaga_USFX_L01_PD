@@ -24,6 +24,9 @@ class GALAGA_USFX_L01_API IBEstructuraEscenario
 
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
-	virtual void CrearMuro() = 0;
-	virtual void CrearBombaTrampa() = 0;
+	virtual void SetEscenario1() = 0;
+	virtual void SetEscenario2() = 0;
+	virtual void SetEscenario3() = 0;
+	virtual void SetEscenario4() = 0;
+
 };

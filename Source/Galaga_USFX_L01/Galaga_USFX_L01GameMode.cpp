@@ -61,19 +61,6 @@ void AGalaga_USFX_L01GameMode::BeginPlay()
 		//se generan aleatoriamente las naves enemigas
 		GeneradorNaves01->generarNave(); 
 		
-
-		//builder
-		stage1= World->SpawnActor<AStage1>(AStage1::StaticClass());
-		stage2 = World->SpawnActor<AStage2>(AStage2::StaticClass());
-		Enginer= World->SpawnActor<AEscenarioEnginer>(AEscenarioEnginer::StaticClass());
-		Enginer->setConstructorEscenario(stage1);
-		Enginer->construirEscenario();
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("se logro"));
-		Enginer->setConstructorEscenario(stage2); 
-		Enginer->construirEscenario(); 
-		
-		
-		
 	}
 }
 
