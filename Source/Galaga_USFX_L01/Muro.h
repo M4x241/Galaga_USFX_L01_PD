@@ -14,11 +14,14 @@ class GALAGA_USFX_L01_API AMuro : public AActor
 {
 	GENERATED_BODY()
 	UStaticMeshComponent* Muro;
+private:
+	float velocidad=800.0;
 public:	
 	// Sets default values for this actor's properties
 	AMuro();
 	UProjectileMovementComponent* ProjectileMovement;
 	UBoxComponent* BoxComponent;
+	TArray<FVector> puntosobjetivos;
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -30,6 +33,7 @@ public:
 	int derecha = -21;
 	int arriba = 21;
 	int typeColision = 0;
+	void setvelocidad(float _velocidad) { velocidad = _velocidad; };
 	void colisionActiva(int _typeColision);
 	void mover();
 	void moverarriba(); 

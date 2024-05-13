@@ -4,42 +4,31 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "BEstructuraEscenario.h"
+#include "Muro.h"
+#include "Torreta.h"
+#include "Portal.h"
+#include "mucionV2.h"
+#include "Puas.h"
+#include "Bomba.h"
 #include "Escenario.generated.h"
 
 UCLASS()
-class GALAGA_USFX_L01_API AEscenario : public AActor, public IBEstructuraEscenario
+class GALAGA_USFX_L01_API AEscenario : public AActor
 {
 	GENERATED_BODY()
 
 public:	
 	// Sets default values for this actor's properties
 	AEscenario();
-
+private:
+	TArray<AActor*> Elementos;
+	//ya no sera neceario estos otros atributos
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-	TArray<FVector> PosicionesMuros;
-	TArray<FVector> PosicionesBombaTrampa;
-	TArray<FVector> PosicionesMurosMovedizos;
-	TArray<FVector> PosicionesMuroPuas;
-	TArray<FVector> PosicionesPortales;
-	TArray<FVector> PosicionesItem;
-	TArray<FVector> scaleMuros;
-	TArray<FVector> PosicionesSuelo;
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-	void SetMuro() ;
-	void SetBombaTrampa() ;
-	void SetMurosMovedizos()  ;
-	void SetMuroPuas() ;
-	void SetPortales()  ;
-	void SetItem() ;
-	void SetEscenario(UStaticMesh)  ;
-	void SetSuelo()  ;
-	virtual void SetEscenario1() override; 
-	virtual void SetEscenario2() override;
-	virtual void SetEscenario3() override;
-	virtual void SetEscenario4() override;
+	FORCEINLINE void BorrarElementos() { Elementos.Empty(); }
+	FORCEINLINE void AgregarElemento(AActor *elemento) { Elementos.Add(elemento); }
 };

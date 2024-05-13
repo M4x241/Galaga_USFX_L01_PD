@@ -11,13 +11,14 @@
 #include "MovimientoABase.h"
 #include "ColisionType.h"
 #include "Logros.h" 
+#include "BControllerBall.h"
 #include "Galaga_USFX_L01Pawn.generated.h"
 class UActivacionBarrera;
 class UMovimientoABase;
 class UColisionType;
 
 UCLASS(Blueprintable)
-class AGalaga_USFX_L01Pawn : public APawn
+class AGalaga_USFX_L01Pawn : public APawn, public IBControllerBall
 {
 	GENERATED_BODY()
 
@@ -150,5 +151,12 @@ public:
 public:
 	//modificamos la velocidad
 	FORCEINLINE void SetVelociad(float _MoveSpeed) { MoveSpeed = _MoveSpeed; }
+
+
+	//lanzar la ball
+	class IBControllerBall* ballDem;
+	void SetBounceBall(AActor* ball);
+	virtual void launchBall() override;
+
 };
 

@@ -32,16 +32,6 @@ UGeneradorNaves::UGeneradorNaves()
 void UGeneradorNaves::generarNave()
 {
 	UWorld* World = GetWorld();
-	//claseEnemiga = ANaveEnemiga::StaticClass();
-	/*ANaveEnemigaCazaAlfa* NaveEnemigaTAlfa;
-	ANaveEnemigaCazaDelta* NaveEnemigaTDelta;
-	ANaveEnemigaTransporteLigero* NaveEnemigaTLigero;
-	ANaveEnemigaTransportePesado* NaveEnemigaTPesado;
-	ANaveEnemigaEspiaScout* NaveEnemigaTScout;
-	ANaveEnemigaEspiaCentral* NaveEnemigaTCentral;
-	ANaveEnemigaNodrizaMadre* NaveEnemigaTMadre;
-	ANaveEnemigaNodrizaWar* NaveEnemigaTWar;
-	ANaveEnemigaReabastecimientoFuel* NaveEnemigaTFuel;*/
 
 	if (World) {
 		FVector posicionNave = FVector(rand() % 1000 - 500, rand() % 1000 - 500, 200);
@@ -49,19 +39,9 @@ void UGeneradorNaves::generarNave()
 
 		AFabricaMxCorporation* fabrica = World->SpawnActor<AFabricaEnemiga>(AFabricaEnemiga::StaticClass());
 		ANaveEnemiga* nave;
-		//GEngine->AddOnScreenDebugMessage(-5, 10.0f, FColor::Blue, TEXT("TE CREO: "));
-		//nave = fabrica->EnsambladoNave("delta");
-		//if (nave) {
-		//	//World->SpawnActor<ANaveEnemigaCaza>(nave->GetClass(), FVector(0, 0, 250), FRotator(0, 0, 0));
-		//	GEngine->AddOnScreenDebugMessage(-5, 10.0f, FColor::Blue, TEXT("TE CREO: "));
-		//}
-		//else {
-		//	//UE_LOG(LogTemp, Warning, TEXT("EnsambladoNave returned nullptr!"));		
-		//	GEngine->AddOnScreenDebugMessage(-5, 10.0f, FColor::Blue, TEXT("NO SE CREO: "));
-		//}
 
 		int tipNave = 0;
-		for (int i = 0; i < 3; i++) {//4
+		for (int i = 0; i < 3; i++) {
 			
 				for (int j = 0; j < 3; j++) {
 					tipNave = rand() % 4;
@@ -87,16 +67,16 @@ void UGeneradorNaves::NotEnemy()
 	for (int i = TANaveEnemigamix.Num() - 1; i >= 0; i--) 
 	{
 		if (TANaveEnemigamix[i]->IsPendingKill()) { 
-			GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Blue, TEXT("Hola"));
 			TANaveEnemigamix.RemoveAt(i); 
 		}
 	}
 	if (TANaveEnemigamix.Num() == 0 ) {
 		level++;
-		pase = true;
-		for (int i = 0; i < level; i++){
+		Enginer->makeLevel(level);
+		generarNave();
+		/*for (int i = 0; i < level; i++){
 			generarNave(); 
-		}
+		}*/
 	}
 }
 
@@ -110,11 +90,11 @@ void UGeneradorNaves::BeginPlay()
 	if (World) { 
 		highScore = GetWorld()->SpawnActor<AHighScore>(AHighScore::StaticClass());
 		stage1 = World->SpawnActor<AStage1>(AStage1::StaticClass());
-		stage1->setHighScore(highScore);
+		stage2 = World->SpawnActor<AStage2>(AStage2::StaticClass());
 		Enginer = World->SpawnActor<AEscenarioEnginer>(AEscenarioEnginer::StaticClass());
 		Enginer->setConstructorEscenario(stage1);
+		Enginer->makeLevel(level);
 	}
-	
 	// ...
 	
 }
@@ -125,21 +105,6 @@ void UGeneradorNaves::TickComponent(float DeltaTime, ELevelTick TickType, FActor
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 	NotEnemy();
-	if (Enginer) {
-		if (level == 1 && pase) {
-			Enginer->construirEscenario1(); pase = false;
-		}
-		else if (level == 2 && pase){
-			Enginer->construirEscenario2(); pase = false;
-		}
-		else if (level == 3 && pase)
-		{
-			Enginer->construirEscenario3(); pase = false;
-		}
-		else if (level == 4 && pase) {
-			Enginer->construirEscenario4(); pase = false;
-		}
-	}
 	// ...
 }
 

@@ -2,7 +2,6 @@
 
 #include "Galaga_USFX_L01GameMode.h"
 #include "Galaga_USFX_L01Pawn.h"
-#include "Logros.h"
 #include "NaveEnemiga.h"
 #include "NaveEnemigaTransporte.h"
 #include "NaveEnemigaCazaAlfa.h"
@@ -17,6 +16,7 @@
 #include "NaveEnemigaNodrizaWar.h"
 #include <ctime>
 #include "ProyectilEnemigo.h"
+#include "BallDemoledora.h"
 #include "Kismet/GameplayStatics.h"
 
 AGalaga_USFX_L01GameMode::AGalaga_USFX_L01GameMode()
@@ -45,15 +45,15 @@ void AGalaga_USFX_L01GameMode::BeginPlay()
 
 	FRotator rotacionNave = FRotator(0.0f, 0.0f, 0.0f);
 
+
+	naveJugador = Cast<AGalaga_USFX_L01Pawn>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
+	ballDemoledora = GetWorld()->SpawnActor<ABallDemoledora>(ABallDemoledora::StaticClass(), FVector(0, 0, 0), FRotator::ZeroRotator);
+	naveJugador->SetBounceBall(ballDemoledora); 
+	naveJugador->launchBall();
+
 	UWorld* const World = GetWorld();
 	if (World != nullptr)
 	{
-
-		logro1 = World->SpawnActor<ALogros>(FVector(200, 200, 250), FRotator(0, 0, 0));  
-		AGalaga_USFX_L01Pawn* LogroGalaga = Cast<AGalaga_USFX_L01Pawn>(UGameplayStatics::GetPlayerPawn(this, 0)); 
-		LogroGalaga->SetLogro(logro1);
-
-		///spwn proyectil
 		ANaveEnemigaReabastecimientoBombs* NaveEnemigaTBoms;
 		proyectil = World->SpawnActor<AProyectilEnemigo>(FVector(-1600,-500,250), rotacionNave);
 		NaveEnemigaTBoms = World->SpawnActor<ANaveEnemigaReabastecimientoBombs>(FVector(300, -900, 1500), rotacionNave);

@@ -409,4 +409,19 @@ void AGalaga_USFX_L01Pawn::BeginPlay()
 	//ColissionSphere->OnComponentBeginOverlap.AddDynamic(this, &AGalaga_USFX_L01Pawn::BeginOverlap); 
 }
 
+void AGalaga_USFX_L01Pawn::SetBounceBall(AActor* ball)
+{
+	ballDem = Cast <IBControllerBall>(ball);
+	if (ballDem)
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, FString::Printf(TEXT("No se pudo realizar el casteo")));
+		return;
+	}
+}
+
+void AGalaga_USFX_L01Pawn::launchBall()
+{
+	ballDem->launchBall();
+}
+
 

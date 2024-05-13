@@ -5,7 +5,13 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "BConstructorEscenario.h"
-#include "HighScore.h"
+#include "Escenario.h"
+#include "Muro.h"
+#include "Torreta.h"
+#include "Portal.h"
+#include "mucionV2.h"
+#include "Puas.h"
+#include "Bomba.h"
 #include "Stage1.generated.h"
 
 UCLASS()
@@ -18,6 +24,15 @@ public:
 	AStage1();
 private:
 	class AEscenario* Escenario; //variable de la clase
+	//elementos posibles del escenario
+	TArray<FVector> Ubicaciones;
+	AMuro *muro;
+	ATorreta *torreta;
+	APortal *portal;
+	AmucionV2 *municion;
+	APuas *puas;
+	ABomba *bomba;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -25,8 +40,14 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-	AHighScore* HighScore;
-	void setHighScore(AHighScore* _highScore) { HighScore = _highScore; };
+
+	FORCEINLINE void getBomba(); 
+	FORCEINLINE AMuro *getMuro();
+	FORCEINLINE AMuro *getMunicion();
+	FORCEINLINE APortal *getPortal();
+	FORCEINLINE APuas *getPuas();
+	FORCEINLINE ATorreta *getTorreta();
+
 	virtual void BuildEscenario1() override;
 	virtual void BuildEscenario2() override;
 	virtual void BuildEscenario3() override;

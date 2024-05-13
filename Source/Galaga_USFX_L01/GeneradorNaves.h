@@ -6,6 +6,7 @@
 #include "Components/SceneComponent.h"
 #include "NaveEnemiga.h"
 #include "Stage1.h"
+#include "Stage2.h"
 #include "EscenarioEnginer.h"
 #include "HighScore.h"
 #include "GeneradorNaves.generated.h"
@@ -31,7 +32,7 @@ public:
 	//buiolder
 	AEscenarioEnginer* Enginer;
 	AStage1* stage1;
-	bool pase=true;
+	AStage2*  stage2;
 	AHighScore* highScore;
 public:	
 	// Called every frame

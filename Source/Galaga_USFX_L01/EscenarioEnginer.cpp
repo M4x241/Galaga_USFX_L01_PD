@@ -27,12 +27,34 @@ void AEscenarioEnginer::Tick(float DeltaTime)
 
 void AEscenarioEnginer::setConstructorEscenario(AActor* _constructor)
 {
-	stage = Cast<AStage1>(_constructor);  
+	stage = Cast<IBConstructorEscenario>(_constructor);
 	if (!stage) 
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Red, TEXT("¡Cast no válido! Consulte Registro de salida para obtener más detalles."));
 		UE_LOG(LogTemp, Error, TEXT("setConstructorEsceneario():¡El actor no es un stage! "));
 	}	
+}
+
+void AEscenarioEnginer::makeLevel(int level)
+{
+	switch (level)
+	{
+	case 1:
+		construirEscenario1();
+		break;
+	case 2:
+		construirEscenario2();
+		break;
+	case 3:
+		construirEscenario3();
+		break;
+	case 4:
+		construirEscenario4();
+		break;
+	default:
+		UE_LOG(LogTemp, Warning, TEXT("No se pudo construir el escenario"));
+		break;
+	}
 }
 
 void AEscenarioEnginer::construirEscenario1()
@@ -42,6 +64,8 @@ void AEscenarioEnginer::construirEscenario1()
 		UE_LOG(LogTemp, Warning, TEXT("No se pudo construir el escenario"));
 	}
 	stage->BuildEscenario1();
+	UE_LOG(LogTemp, Warning, TEXT("Construyendo"));
+
 }
 
 void AEscenarioEnginer::construirEscenario2()

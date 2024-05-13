@@ -47,6 +47,10 @@ public:
 	ANaveEnemigaCaza* NaveEnemigaCaza01;
 	ALogros* logro1;  
 	AProyectilEnemigo* proyectil;
+	UPROPERTY(VisibleAnywhere, Category = "Game mode") 
+	class AGalaga_USFX_L01Pawn* naveJugador;
+	UPROPERTY(VisibleAnywhere, Category = "Game mode")
+	class ABallDemoledora* ballDemoledora;
 
 public:
 	virtual void Tick(float DeltaTime) override;

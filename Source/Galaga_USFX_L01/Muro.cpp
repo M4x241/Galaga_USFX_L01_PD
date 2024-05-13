@@ -44,6 +44,12 @@ AMuro::AMuro()
 void AMuro::BeginPlay()
 {
 	Super::BeginPlay();
+	FVector location;
+	location = FVector(-1000, 2000, 200);
+	puntosobjetivos.Add(location);
+	location = FVector(-1000, -2000, 200);
+	puntosobjetivos.Add(location);
+	puntosobjetivos.Add(location);
 	
 }
 
@@ -68,7 +74,7 @@ void AMuro::moverLateral(float DeltaTime)
 	if (derecha!=-21) {
 		if (derecha == 1)
 		{
-			SetActorLocation(GetActorLocation() + FVector(0.0f,800.0f*DeltaTime, 0.0f));
+			SetActorLocation(GetActorLocation() + FVector(0.0f,velocidad*DeltaTime, 0.0f));
 			if (GetActorLocation().Y > 1750) {
 				derecha = 0;
 			}
@@ -76,7 +82,7 @@ void AMuro::moverLateral(float DeltaTime)
 
 		if (derecha == 0)
 		{
-			SetActorLocation(GetActorLocation() + FVector(0.0f, -800.0f*DeltaTime,  0.0f));
+			SetActorLocation(GetActorLocation() + FVector(0.0f, -velocidad*DeltaTime,  0.0f));
 			if (GetActorLocation().Y < -1700) {
 				derecha = 1;
 			}
@@ -89,7 +95,7 @@ void AMuro::moverArriba(float DeltaTime)
 	if (arriba != 21) {
 		if (arriba == 1)
 		{
-			SetActorLocation(GetActorLocation() + FVector(800.0f * DeltaTime, 0.0f, 0.0f));
+			SetActorLocation(GetActorLocation() + FVector(velocidad * DeltaTime, 0.0f, 0.0f));
 			if (GetActorLocation().X > 2250) {
 				arriba = 0;
 			}
@@ -97,7 +103,7 @@ void AMuro::moverArriba(float DeltaTime)
 
 		if (arriba == 0)
 		{
-			SetActorLocation(GetActorLocation() + FVector(-800.0f * DeltaTime, 0.0f, 0.0f));
+			SetActorLocation(GetActorLocation() + FVector(-velocidad * DeltaTime, 0.0f, 0.0f));
 			if (GetActorLocation().X < -1700) {
 				arriba = 1;
 			}
@@ -135,7 +141,10 @@ void AMuro::NotifyHit(UPrimitiveComponent* MyComp, AActor* Other, UPrimitiveComp
 		Other->Destroy();
 	}
 	else if (typeColision == 2) {
-		Other->SetActorLocation(FVector(-1000, 2000, 200));
+		
+		Other->SetActorLocation(puntosobjetivos[0]);
+		//puntosobjetivos.RemoveAt(0);
+
 	}
 }
 void AMuro::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
