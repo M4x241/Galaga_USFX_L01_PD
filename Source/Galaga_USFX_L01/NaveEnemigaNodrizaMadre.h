@@ -18,10 +18,13 @@ private:
 	UPROPERTY( VisibleAnywhere)
 	int posicionale;
 	bool ban = 1;
+	class AFacadeDisparos* disparos;
 
 	//nave enemiga destrucion
 	//FVector NaveAliada;
-	
+protected:
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
 
 public:
 	FORCEINLINE int GetTiposNaves() const { return TiposNaves; }

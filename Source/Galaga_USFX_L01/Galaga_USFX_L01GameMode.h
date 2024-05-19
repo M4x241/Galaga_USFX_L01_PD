@@ -43,7 +43,7 @@ public:
 	TArray<ANaveEnemigaCazaAlfa*> TANaveEnemigaCazaAlfa;
 	TArray<ANaveEnemigaCazaDelta*> TANaveEnemigaCazaDelta;
 	TArray<ANaveEnemigaTransporte*> TANaveEnemigaTransporte;
-
+	ANaveEnemigaNodrizaMadre* NaveEnemigaNodrizaMadre01;
 	ANaveEnemigaCaza* NaveEnemigaCaza01;
 	ALogros* logro1;  
 	AProyectilEnemigo* proyectil;
