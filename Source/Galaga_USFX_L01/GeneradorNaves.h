@@ -9,6 +9,7 @@
 #include "Stage2.h"
 #include "EscenarioEnginer.h"
 #include "HighScore.h"
+#include "ObserverBoss.h"
 #include "GeneradorNaves.generated.h"
 class ANaveEnemiga;
 
@@ -27,6 +28,8 @@ protected:
 	virtual void BeginPlay() override;
 private:
 	TArray<ANaveEnemiga*> TANaveEnemigamix;
+	TArray<ANaveEnemiga*> NavesGuardianes;
+	AObserverBoss* Observador;
 public:
 	int level=1	;
 	//buiolder
@@ -34,9 +37,9 @@ public:
 	AStage1* stage1;
 	AStage2*  stage2;
 	AHighScore* highScore;
+	class ANaveEnemigaNodrizaMadre* NaveMadre;
 public:	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
-
 		
 };

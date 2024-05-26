@@ -54,6 +54,7 @@ protected:
 		FORCEINLINE float GetPeso() const { return peso; }
 		FORCEINLINE float GetVolumen() const { return volumen; }
 		FORCEINLINE void ReducirStamina() { stamina -= 1; }
+		FORCEINLINE void RestarEnergia(float _energia) { energia -= _energia; }//metodo para restar energia
 
 	//Para reescribir valores
 	FORCEINLINE void SetStamina(float _stamina){stamina=_stamina;}

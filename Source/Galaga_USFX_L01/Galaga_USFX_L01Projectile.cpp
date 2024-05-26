@@ -41,9 +41,10 @@ void AGalaga_USFX_L01Projectile::OnHit(UPrimitiveComponent* HitComp, AActor* Oth
 	ANaveEnemiga* ActorHit = Cast<ANaveEnemiga>(OtherActor);
 	if(ActorHit!= nullptr )
 	{
-		ActorHit->ReducirStamina();
-		if (ActorHit->GetStamina() <=0) {
-			ActorHit->Destroy();
+		float NEGestamina = (53 * rand() % 4)/10;
+		ActorHit->RestarEnergia(20);
+		if (ActorHit->GetEnergia() <=0) {
+			ActorHit->Destroy(); 
 		}
 	}
 	else {

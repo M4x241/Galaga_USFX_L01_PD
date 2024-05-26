@@ -24,4 +24,5 @@ class GALAGA_USFX_L01_API IINavesGuardianas
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
 	virtual void UpdateAction() = 0;
+	virtual void protegerNodriza(FVector _posicionNodriza) = 0;
 };

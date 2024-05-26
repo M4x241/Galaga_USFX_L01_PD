@@ -12,12 +12,11 @@ void ANaveEnemigaNodrizaMadre::BeginPlay()
 	Super::BeginPlay();
 	disparos = GetWorld()->SpawnActor<AFacadeDisparos>(AFacadeDisparos::StaticClass());
 	FTimerHandle timeDisparo;
-	Observador = GetWorld()->SpawnActor<AObserverBoss>(AObserverBoss::StaticClass());
-	Observador->ObservarANodriza(this);
+	
 
-	//disparos->SetDificultad("Facil");
+	disparos->SetDificultad("Facil");
 	//disparos->SetDificultad("Medio");
-	disparos->SetDificultad("Dificil");
+	//disparos->SetDificultad("Dificil");
 
 	GetWorldTimerManager().SetTimer(timeDisparo, this, &ANaveEnemigaNodrizaMadre::Disparar, 2.0f, true, 0.0f);
 }

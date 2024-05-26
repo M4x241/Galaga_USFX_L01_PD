@@ -30,5 +30,10 @@ protected:
 private:
 	AObserverBoss* ObserverBoss;//se suscriben al observador del boss
 	virtual void UpdateAction() override; 
+	bool muevete = false;
+	FVector posicionNodriza;
+public:
 	void setPublicador(AObserverBoss* _ObserverBoss);
+	void moverseANodriza(float DeltaTime);
+	virtual void protegerNodriza(FVector _posicionNodriza) override;
 };

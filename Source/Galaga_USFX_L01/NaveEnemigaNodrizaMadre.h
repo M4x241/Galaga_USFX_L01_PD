@@ -38,6 +38,5 @@ protected:
 	virtual void Mover(float DeltaTime)override;
 	virtual void Disparar();
 	virtual void Destruirse();
-private:
-	AObserverBoss* Observador; 
+
 };

@@ -44,7 +44,6 @@ void AGalaga_USFX_L01GameMode::BeginPlay()
 	FVector ubicacionNave02 = FVector(x, y + 200, 250.0f);
 
 	FRotator rotacionNave = FRotator(0.0f, 0.0f, 0.0f);
-	NaveEnemigaNodrizaMadre01 = GetWorld()->SpawnActor<ANaveEnemigaNodrizaMadre>(FVector(1800,1000,200), FRotator(0,0,0));
 
 	naveJugador = Cast<AGalaga_USFX_L01Pawn>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
 	ballDemoledora = GetWorld()->SpawnActor<ABallDemoledora>(ABallDemoledora::StaticClass(), FVector(0, 0, 0), FRotator::ZeroRotator);

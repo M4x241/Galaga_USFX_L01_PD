@@ -27,6 +27,7 @@ public:
 private:
 	TArray<IINavesGuardianas*> Guardianes;
 	ANaveEnemigaNodriza* NodrizaObservada;
+	bool OneNotifit = true;
 public:
 	virtual void AddGuardian(IINavesGuardianas* guardian);
 	virtual void RemoveGuardian(IINavesGuardianas* guardian); 

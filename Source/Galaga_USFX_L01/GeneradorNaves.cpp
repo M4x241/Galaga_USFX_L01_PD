@@ -16,6 +16,7 @@
 #include "NaveEnemigaNodrizaMadre.h"
 #include "NaveEnemigaNodrizaWar.h"
 #include "FabricaEnemiga.h"
+#include "INavesGuardianas.h"
 #include "Components/StaticMeshComponent.h"
 #include "Kismet/GameplayStatics.h"
 
@@ -96,9 +97,14 @@ void UGeneradorNaves::BeginPlay()
 		Enginer->makeLevel(level);
 	}
 
-	for(int i = 0; i < 2; i++) {
-		for(int j = 0; j < 3; j++) {
-			ANaveEnemiga* nave = GetWorld()->SpawnActor<ANaveEnemigaEspiaScout>(ANaveEnemigaEspiaScout::StaticClass(), FVector(1200 + 200 * i, -100 + 4500 * j, 200), FRotator(0, 0, 0));
+	NaveMadre = GetWorld()->SpawnActor<ANaveEnemigaNodrizaMadre>(FVector(1800, 1000, 200), FRotator(0, 0, 0));
+	Observador = GetWorld()->SpawnActor<AObserverBoss>(AObserverBoss::StaticClass());
+	Observador->ObservarANodriza(NaveMadre);
+	for (int i = 0; i < 2; i++) {
+		for (int j = 0; j < 3; j++) {
+			ANaveEnemigaEspiaScout* nave = GetWorld()->SpawnActor<ANaveEnemigaEspiaScout>(ANaveEnemigaEspiaScout::StaticClass(), FVector(1200 + 200 * i, 4000 + 200 * j, 200), FRotator(0, 0, 0));
+			//NavesGuardianes.Push(nave);
+			nave->setPublicador(Observador);
 		}
 	}
 	// ...

@@ -32,8 +32,8 @@ void AEstadoAturdido::EstablecerJugador(AGalaga_USFX_L01Pawn* _jugador)
 void AEstadoAturdido::Aturdido()
 {
 	jugador1 = Cast<AActor>(jugador);
-	int y = rand() % 1000;
-	jugador1->SetActorLocation(FVector(1000,y,200));
+	int y = rand() % 2000-1000;
+	jugador1->SetActorLocation(FVector(800,y,200));
 	FTimerHandle TimerHandle;
 	GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &AEstadoAturdido::Aturdido, 0.3f, false, 0.0f);
 	FTimerHandle TimerHandle1;

@@ -2,6 +2,7 @@
 
 
 #include "ObserverBoss.h"
+#include "NaveEnemigaEspiaScout.h"
 
 // Sets default values
 AObserverBoss::AObserverBoss()
@@ -24,14 +25,19 @@ void AObserverBoss::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 	if (NodrizaObservada)
 	{
-		if (NodrizaObservada->GetEnergia() <= 30) {
+		if (NodrizaObservada->GetEnergia() <= 30 && OneNotifit) {
 			NotifyGuardians();
+			OneNotifit = false;
+		}
+		else if(NodrizaObservada->GetEnergia() > 30){
+			OneNotifit = true;
 		}
 	}
 }
 
 void AObserverBoss::AddGuardian(IINavesGuardianas* guardian)
 {
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, TEXT("Guardian agregado"));
 	Guardianes.Add(guardian);
 }
 
@@ -42,10 +48,18 @@ void AObserverBoss::RemoveGuardian(IINavesGuardianas* guardian)
 
 void AObserverBoss::NotifyGuardians()
 {
+	int count = -500;
 	for (IINavesGuardianas* guardian : Guardianes)
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Notificando a guardianes"));
-		//guardian->EscoltarBoss();
+		AActor *Nodriza = Cast<AActor>(NodrizaObservada); 
+		FVector posNodriza = Nodriza->GetActorLocation();
+		//mostrar la posNodriza en mensaje en pantalla
+		//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, posNodriza.ToString());
+		posNodriza.Y += count;
+		posNodriza.X -= 400;
+		count += 200;
+		guardian->protegerNodriza(posNodriza);
 	}
 }
 
@@ -55,4 +69,3 @@ void AObserverBoss::ObservarANodriza(ANaveEnemigaNodriza* _NodrizaObservada)
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, TEXT("Nodriza observada"));
 
 }
-

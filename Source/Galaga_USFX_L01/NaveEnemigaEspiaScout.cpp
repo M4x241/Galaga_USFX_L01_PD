@@ -13,6 +13,7 @@ void ANaveEnemigaEspiaScout::Tick(float DeltaTime)
 		ObserverBoss->RemoveGuardian(this);
 		Destroy();
 	}
+	moverseANodriza(DeltaTime);
 }
 
 
@@ -36,4 +37,21 @@ void ANaveEnemigaEspiaScout::setPublicador(AObserverBoss* _ObserverBoss)
 {
 	ObserverBoss = _ObserverBoss;
 	ObserverBoss->AddGuardian(this);
+}
+
+void ANaveEnemigaEspiaScout::protegerNodriza(FVector _posicionNodriza)
+{
+	muevete = true;
+	posicionNodriza = _posicionNodriza;
+}
+
+void ANaveEnemigaEspiaScout::moverseANodriza(float DeltaTime)
+{
+	if (muevete==true)
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::White, TEXT("Moviendose a Defender"));
+		FVector direccion = posicionNodriza - GetActorLocation();
+		direccion.Normalize();
+		SetActorLocation(GetActorLocation() + direccion *800 * DeltaTime);
+	}
 }
