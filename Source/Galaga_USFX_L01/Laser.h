@@ -4,10 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "BMunicionLevel.h"
 #include "Laser.generated.h"
 
 UCLASS()
-class GALAGA_USFX_L01_API ALaser : public AActor
+class GALAGA_USFX_L01_API ALaser : public AActor, public IBMunicionLevel
 {
 	GENERATED_BODY()
 	UStaticMeshComponent* lasermalla;
@@ -26,6 +27,9 @@ public:
 public:
 	void tipoLaser();
 	void Potencia();
-	void Estiramiento();
+	void Estiramiento(float DeltaTime);
+	float varTick= 0;
+	float velocidad = 0;
+	virtual void SetLevelMunicion(FString dif) override;
 
 };

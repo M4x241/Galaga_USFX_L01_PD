@@ -46,6 +46,8 @@ D:\DOCUMENTOS\Galaga_USFX_L01\Source\Galaga_USFX_L01\Logros.h
 D:\DOCUMENTOS\Galaga_USFX_L01\Intermediate\Build\Win64\UE4Editor\Inc\Galaga_USFX_L01\Logros.generated.h
 D:\DOCUMENTOS\Galaga_USFX_L01\Source\Galaga_USFX_L01\BControllerBall.h
 D:\DOCUMENTOS\Galaga_USFX_L01\Intermediate\Build\Win64\UE4Editor\Inc\Galaga_USFX_L01\BControllerBall.generated.h
+D:\DOCUMENTOS\Galaga_USFX_L01\Source\Galaga_USFX_L01\IEstadoPawn.h
+D:\DOCUMENTOS\Galaga_USFX_L01\Intermediate\Build\Win64\UE4Editor\Inc\Galaga_USFX_L01\IEstadoPawn.generated.h
 D:\DOCUMENTOS\Galaga_USFX_L01\Intermediate\Build\Win64\UE4Editor\Inc\Galaga_USFX_L01\Galaga_USFX_L01Pawn.generated.h
 D:\DOCUMENTOS\Galaga_USFX_L01\Intermediate\Build\Win64\UE4Editor\Inc\Galaga_USFX_L01\Bomba.generated.h
 D:\DOCUMENTOS\Galaga_USFX_L01\Intermediate\Build\Win64\UE4Editor\Inc\Galaga_USFX_L01\Escenario.generated.h

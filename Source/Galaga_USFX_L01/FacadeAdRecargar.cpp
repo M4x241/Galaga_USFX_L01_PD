@@ -28,21 +28,22 @@ void AFacadeAdRecargar::Tick(float DeltaTime)
 
 }
 
-TArray<AActor*> AFacadeAdRecargar::recargarmuicion()
+TArray<FString> AFacadeAdRecargar::recargarmuicion()
 {
 	for (int i = 0; i < 15; i++)
-	{//quiero almacenar en el array de manera aleatoria los 3 tipos de municion
-		if (i % 5 == 0 || i == 0) {
-			municionAleatoria = rand() % 2;
+	{//se almacena en el array de manera aleatoria los 3 tipos de municion
+		if (i % 4 == 0 || i == 0) {
+			municionAleatoria = rand() % 1;
 		}
 		if (municionAleatoria==0) {
-			municiones.Add(GetWorld()->SpawnActor<ABombaC>(ABombaC::StaticClass()));
+			municiones.Add("Bomba");
 		}
 		else if(municionAleatoria == 1){
-			municiones.Add(GetWorld()->SpawnActor<ALaser>(ALaser::StaticClass()));
+			municiones.Add("Laser");
 		}
 		else if (municionAleatoria == 2) {
-			municiones.Add(GetWorld()->SpawnActor<AFoton>(AFoton::StaticClass()));
+			municiones.Add("Foton"); 
+			municiones.Add("Foton");
 		}
 	}
 	return municiones; 

@@ -19,13 +19,17 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 private:
-	TArray<AActor*> municion;
+	TArray<FString> municion;
 	class ABombaC* bomba;
 	class ALaser* laser;
 	class AFoton* foton;
 	class AFacadeAdRecargar* recargar;
+	class IBMunicionLevel* municionLevel;
+	FString dificultad;
+	void Recargar();
 public:
-	void Launch();
+	void Launch(FVector posicionNave);
+	void SetDificultad(FString dif){ dificultad = dif; }
 
 public:	
 	// Called every frame

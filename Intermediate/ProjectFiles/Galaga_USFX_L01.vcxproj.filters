@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\Galaga_USFX_L01.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{437B9C4C-F178-404E-93F6-4356575322AC}</UniqueIdentifier>
+      <UniqueIdentifier>{2C95FB09-41DA-4EFF-A787-DB6935D12C82}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\Galaga_USFX_L01.Target.cs">
       <Filter>Source</Filter>
@@ -14,7 +14,7 @@
     <None Include="..\..\.gitattributes" />
     <None Include="..\..\.gitignore" />
     <Filter Include="Config">
-      <UniqueIdentifier>{151604CD-41A5-4938-8667-1DD51AC558C4}</UniqueIdentifier>
+      <UniqueIdentifier>{162E1E72-B7A4-4B4D-B152-F132157A6F15}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -32,7 +32,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\Galaga_USFX_L01">
-      <UniqueIdentifier>{A1B70F70-CC4F-4C9D-8658-E7B0B35FAB37}</UniqueIdentifier>
+      <UniqueIdentifier>{FAC98963-6EDC-49D1-B9E5-AD701124A761}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\Galaga_USFX_L01\ActivacionBarrera.cpp">
       <Filter>Source\Galaga_USFX_L01</Filter>
@@ -76,6 +76,12 @@
     <ClInclude Include="..\..\Source\Galaga_USFX_L01\BEstructuraEscenario.h">
       <Filter>Source\Galaga_USFX_L01</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\Galaga_USFX_L01\BMunicionLevel.cpp">
+      <Filter>Source\Galaga_USFX_L01</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Galaga_USFX_L01\BMunicionLevel.h">
+      <Filter>Source\Galaga_USFX_L01</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\Galaga_USFX_L01\Bomba.cpp">
       <Filter>Source\Galaga_USFX_L01</Filter>
     </ClCompile>
@@ -116,6 +122,30 @@
       <Filter>Source\Galaga_USFX_L01</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\Galaga_USFX_L01\EscenarioEnginer.h">
+      <Filter>Source\Galaga_USFX_L01</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Galaga_USFX_L01\EstadoAturdido.cpp">
+      <Filter>Source\Galaga_USFX_L01</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Galaga_USFX_L01\EstadoAturdido.h">
+      <Filter>Source\Galaga_USFX_L01</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Galaga_USFX_L01\EstadoConfundido.cpp">
+      <Filter>Source\Galaga_USFX_L01</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Galaga_USFX_L01\EstadoConfundido.h">
+      <Filter>Source\Galaga_USFX_L01</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Galaga_USFX_L01\EstadoDanado.cpp">
+      <Filter>Source\Galaga_USFX_L01</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Galaga_USFX_L01\EstadoDanado.h">
+      <Filter>Source\Galaga_USFX_L01</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Galaga_USFX_L01\EstadoNormal.cpp">
+      <Filter>Source\Galaga_USFX_L01</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Galaga_USFX_L01\EstadoNormal.h">
       <Filter>Source\Galaga_USFX_L01</Filter>
     </ClInclude>
     <ClCompile Include="..\..\Source\Galaga_USFX_L01\Evento.cpp">
@@ -191,6 +221,18 @@
       <Filter>Source\Galaga_USFX_L01</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\Galaga_USFX_L01\HighScore.h">
+      <Filter>Source\Galaga_USFX_L01</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Galaga_USFX_L01\IEstadoPawn.cpp">
+      <Filter>Source\Galaga_USFX_L01</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Galaga_USFX_L01\IEstadoPawn.h">
+      <Filter>Source\Galaga_USFX_L01</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Galaga_USFX_L01\INavesGuardianas.cpp">
+      <Filter>Source\Galaga_USFX_L01</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Galaga_USFX_L01\INavesGuardianas.h">
       <Filter>Source\Galaga_USFX_L01</Filter>
     </ClInclude>
     <ClCompile Include="..\..\Source\Galaga_USFX_L01\InventarioComponent.cpp">
@@ -383,6 +425,12 @@
       <Filter>Source\Galaga_USFX_L01</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\Galaga_USFX_L01\NavesRestantes.h">
+      <Filter>Source\Galaga_USFX_L01</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Galaga_USFX_L01\ObserverBoss.cpp">
+      <Filter>Source\Galaga_USFX_L01</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Galaga_USFX_L01\ObserverBoss.h">
       <Filter>Source\Galaga_USFX_L01</Filter>
     </ClInclude>
     <ClCompile Include="..\..\Source\Galaga_USFX_L01\PlayerScore.cpp">

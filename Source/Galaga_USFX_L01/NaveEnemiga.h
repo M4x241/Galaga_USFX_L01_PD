@@ -31,7 +31,7 @@ protected:
 	int capacidadMunicion;
 	//int tipoNave;   /////// la nave ya se define al ser hija las mallas
 	int experiencia;
-	float energia;
+	float energia=100;
 
 	float peso;
 	float volumen;

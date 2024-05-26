@@ -30,6 +30,4 @@ protected:
 	virtual void Mover(float DeltaTime);
 	virtual void Disparar();
 	virtual void Destruirse();
-	//virtual void Escapar();
-
 };

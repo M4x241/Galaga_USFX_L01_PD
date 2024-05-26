@@ -4,12 +4,14 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "BMunicionLevel.h"
 #include "Foton.generated.h"
 
 UCLASS()
-class GALAGA_USFX_L01_API AFoton : public AActor
+class GALAGA_USFX_L01_API AFoton : public AActor, public IBMunicionLevel
 {
 	GENERATED_BODY()
+	UStaticMeshComponent* fotonmalla;
 	
 public:	
 	// Sets default values for this actor's properties
@@ -24,6 +26,13 @@ public:
 	virtual void Tick(float DeltaTime) override;
 public:
 	void TipoFoton();
-	void Rotar();
+	void Rotar(float Deltatime);
+	void zigzag(float DeltaTime);
+	virtual void SetLevelMunicion(FString dif) override;
 
+private:
+	int velocidad = 800;
+	float ZigActivo;
+	int ID = 1;
+	FVector posIn;
 };

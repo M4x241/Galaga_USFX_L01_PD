@@ -11,6 +11,7 @@ ALaser::ALaser()
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> BallMesh(TEXT("StaticMesh'/Game/Meshes/BulletLevel2.BulletLevel2'"));
 	lasermalla = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMesh'/Game/Meshes/BulletLevel2.BulletLevel2'"));
 	RootComponent = lasermalla;
+	SetActorScale3D(FVector(1, 5, 1));
 	lasermalla->SetStaticMesh(BallMesh.Object);
 
 }
@@ -26,7 +27,8 @@ void ALaser::BeginPlay()
 void ALaser::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
+	varTick += GetWorld()->GetDeltaSeconds();
+	Estiramiento(DeltaTime);
 }
 
 void ALaser::tipoLaser()
@@ -37,7 +39,33 @@ void ALaser::Potencia()
 {
 }
 
-void ALaser::Estiramiento()
+void ALaser::Estiramiento(float DeltaTime)
 {
+	if (varTick >= 1.5f)
+	{
+		FVector esti = GetActorScale3D();
+		esti.X += 800 * DeltaTime;
+		SetActorRelativeScale3D(esti);
+	}
+	if (varTick >= 2.5) {
+		Destroy();
+	}
+	
+}
+
+void ALaser::SetLevelMunicion(FString dif)
+{
+	if (dif == "Facil")
+	{
+		velocidad = 0;
+	}
+	else if (dif == "Medio")
+	{
+		velocidad = 800;
+	}
+	else if (dif == "Dificil")
+	{
+		velocidad = 1200;
+	}
 }
 

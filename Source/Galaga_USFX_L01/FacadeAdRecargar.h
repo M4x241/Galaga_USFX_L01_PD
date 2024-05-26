@@ -15,7 +15,7 @@ public:
 	// Sets default values for this actor's properties
 	AFacadeAdRecargar();
 private:
-	TArray<AActor*> municiones;
+	TArray<FString> municiones;
 	int municionAleatoria;
 
 protected:
@@ -25,5 +25,5 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-	FORCEINLINE TArray<AActor*> recargarmuicion();
+	FORCEINLINE TArray<FString> recargarmuicion();
 };

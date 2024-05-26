@@ -95,6 +95,12 @@ void UGeneradorNaves::BeginPlay()
 		Enginer->setConstructorEscenario(stage1);
 		Enginer->makeLevel(level);
 	}
+
+	for(int i = 0; i < 2; i++) {
+		for(int j = 0; j < 3; j++) {
+			ANaveEnemiga* nave = GetWorld()->SpawnActor<ANaveEnemigaEspiaScout>(ANaveEnemigaEspiaScout::StaticClass(), FVector(1200 + 200 * i, -100 + 4500 * j, 200), FRotator(0, 0, 0));
+		}
+	}
 	// ...
 	
 }

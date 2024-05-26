@@ -12,6 +12,10 @@
 #include "Engine/StaticMesh.h"
 #include "Kismet/GameplayStatics.h"
 #include "Sound/SoundBase.h"
+#include "EstadoAturdido.h"
+#include "EstadoDanado.h"
+#include "EstadoNormal.h"
+#include "EstadoConfundido.h"
 #include "NaveEnemiga.h"
 
 const FName AGalaga_USFX_L01Pawn::MoveForwardBinding("MoveForward");
@@ -107,12 +111,51 @@ void AGalaga_USFX_L01Pawn::BeginOverlap(UPrimitiveComponent* Comp, AActor* Other
 
 }
 
+void AGalaga_USFX_L01Pawn::PawnEstadoNormal()
+{
+	estadoActual = GetWorld()->SpawnActor<AEstadoNormal>(AEstadoNormal::StaticClass());
+	estadoActual->EstablecerJugador(this);
+	//estadoActual = estadoNormal;
+	estadoActual->Normal(); 
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Black, TEXT("Normal: ") + estadoActual->ObtenerEstado());
+
+}
+
+void AGalaga_USFX_L01Pawn::PawnEstadoDanado()
+{
+	estadoActual = GetWorld()->SpawnActor<AEstadoDanado>(AEstadoDanado::StaticClass());
+	estadoActual->EstablecerJugador(this);
+	//estadoActual = estadoDanado;
+	estadoActual->Danado();
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Danado: ") + estadoActual->ObtenerEstado());
+}
+
+void AGalaga_USFX_L01Pawn::PawnEstadoAturdido()
+{	
+	estadoActual = GetWorld()->SpawnActor<AEstadoAturdido>(AEstadoAturdido::StaticClass());
+	estadoActual->EstablecerJugador(this);
+	//estadoActual = estadoAturdido;
+	estadoActual->Aturdido();
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Aturdido: ") + estadoActual->ObtenerEstado());
+}
+
+void AGalaga_USFX_L01Pawn::PawnEstadoConfundido()
+{
+	estadoActual = GetWorld()->SpawnActor<AEstadoConfundido>(AEstadoConfundido::StaticClass());
+	estadoActual->EstablecerJugador(this);
+	//estadoActual = estadoConfundido;
+	estadoActual->Confundido();
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Confundido: ") + estadoActual->ObtenerEstado());
+}
+
+void AGalaga_USFX_L01Pawn::controles(bool activo)
+{
+	moverse = activo;
+}
+
 void AGalaga_USFX_L01Pawn::RestarVida()
 {
 	vida--; 
-	
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Vida ENTROOOOOOOOO")); 
-
 	if(ALogros* logro = Cast<ALogros>(logro1))
 	{
 		logro->EliminarVida();
@@ -307,58 +350,62 @@ void AGalaga_USFX_L01Pawn::SetupPlayerInputComponent(class UInputComponent* Play
 void AGalaga_USFX_L01Pawn::Tick(float DeltaSeconds)
 {
 
-
-	// Find movement direction
-	//posicionNave = GetPa();
-	const float ForwardValue = GetInputAxisValue(MoveForwardBinding);
-	const float RightValue = GetInputAxisValue(MoveRightBinding);
-	/*if (ForwardValue != 0 || RightValue != 0)
-	{
-		if (RightValue == 1) {
-			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("RightValue: ") + FString::SanitizeFloat(RightValue));
-		}
-		else if (RightValue == -1) {
-			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("RightValue: ") + FString::SanitizeFloat(RightValue));
-		}
-		if (ForwardValue == 1) {
-			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("ForwardValue: ") + FString::SanitizeFloat(ForwardValue));
-		}
-		else if (ForwardValue == -1) {
-			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("ForwardValue: ") + FString::SanitizeFloat(ForwardValue));
-		}
-	}*/
-
-	// Clamp max size so that (X=1, Y=1) doesn't cause faster movement in diagonal directions
-	const FVector MoveDirection = FVector(ForwardValue, RightValue, 0.f).GetClampedToMaxSize(1.0f);
-
-	// Calculate  movement
-	const FVector Movement = MoveDirection * MoveSpeed * DeltaSeconds;
-
-	// If non-zero size, move this actor
-	if (Movement.SizeSquared() > 0.0f)
-	{
-		const FRotator NewRotation = Movement.Rotation();
-		//CameraComponent->SetRelativeRotation(NewRotation);
-		FHitResult Hit(1.f);
-		RootComponent->MoveComponent(Movement, NewRotation, true, &Hit);
-		if (typecamara == -1) {
-			CameraBoom->SetRelativeRotation(NewRotation); 
-		}
-		if (Hit.IsValidBlockingHit())
+	if (moverse) {
+		const float ForwardValue = GetInputAxisValue(MoveForwardBinding);
+		const float RightValue = GetInputAxisValue(MoveRightBinding);
+		/*if (ForwardValue != 0 || RightValue != 0)
 		{
-			const FVector Normal2D = Hit.Normal.GetSafeNormal2D();
-			const FVector Deflection = FVector::VectorPlaneProject(Movement, Normal2D) * (1.f - Hit.Time);
-			RootComponent->MoveComponent(Deflection, NewRotation, true);
-			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Hit: ") + Hit.Normal.ToString());
-		}
-	}
-	// Create fire direction vector
-	const float FireForwardValue = GetInputAxisValue(FireForwardBinding);
-	const float FireRightValue = GetInputAxisValue(FireRightBinding);
-	const FVector FireDirection = FVector(FireForwardValue, FireRightValue, 0.f);
+			if (RightValue == 1) {
+				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("RightValue: ") + FString::SanitizeFloat(RightValue));
+			}
+			else if (RightValue == -1) {
+				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("RightValue: ") + FString::SanitizeFloat(RightValue));
+			}
+			if (ForwardValue == 1) {
+				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("ForwardValue: ") + FString::SanitizeFloat(ForwardValue));
+			}
+			else if (ForwardValue == -1) {
+				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("ForwardValue: ") + FString::SanitizeFloat(ForwardValue));
+			}
+		}*/
 
-	// Try and fire a shot
-	FireShot(FireDirection);
+		// Clamp max size so that (X=1, Y=1) doesn't cause faster movement in diagonal directions
+		const FVector MoveDirection = FVector(ForwardValue, RightValue, 0.f).GetClampedToMaxSize(1.0f);
+
+		// Calculate  movement
+		const FVector Movement = MoveDirection * MoveSpeed * DeltaSeconds;
+
+		// If non-zero size, move this actor
+		if (Movement.SizeSquared() > 0.0f)
+		{
+			const FRotator NewRotation = Movement.Rotation();
+			//CameraComponent->SetRelativeRotation(NewRotation);
+			FHitResult Hit(1.f);
+			RootComponent->MoveComponent(Movement, NewRotation, true, &Hit);
+			if (typecamara == -1) {
+				CameraBoom->SetRelativeRotation(NewRotation);
+			}
+			if (Hit.IsValidBlockingHit())
+			{
+				const FVector Normal2D = Hit.Normal.GetSafeNormal2D();
+				const FVector Deflection = FVector::VectorPlaneProject(Movement, Normal2D) * (1.f - Hit.Time);
+				RootComponent->MoveComponent(Deflection, NewRotation, true);
+				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Hit: ") + Hit.Normal.ToString());
+			}
+		}
+		// Create fire direction vector
+		const float FireForwardValue = GetInputAxisValue(FireForwardBinding);
+		const float FireRightValue = GetInputAxisValue(FireRightBinding);
+		const FVector FireDirection = FVector(FireForwardValue, FireRightValue, 0.f);
+
+		// Try and fire a shot
+		FireShot(FireDirection);
+		cambioEstado += GetWorld()->GetDeltaSeconds();
+	}
+	if (vida < 1) {
+		estadoActual->RegresarEstado();
+		Destroy();
+	}
 	
 }
 
@@ -406,7 +453,14 @@ void AGalaga_USFX_L01Pawn::BeginPlay()
 	Super::BeginPlay();
 	//posicionInicial = GetActorLocation(); 
 	posicionInicial = FVector(int(GetActorLocation().X), int(GetActorLocation().Y), int(GetActorLocation().Z));
-	//ColissionSphere->OnComponentBeginOverlap.AddDynamic(this, &AGalaga_USFX_L01Pawn::BeginOverlap); 
+	PawnEstadoNormal();
+	FTimerHandle TimerHandle;
+	FTimerHandle TimerHandle1;
+	FTimerHandle TimerHandle2;
+	GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &AGalaga_USFX_L01Pawn::PawnEstadoConfundido, 3.0f, false);
+	GetWorld()->GetTimerManager().SetTimer(TimerHandle1, this, &AGalaga_USFX_L01Pawn::PawnEstadoAturdido, 6.5f, false);
+	GetWorld()->GetTimerManager().SetTimer(TimerHandle2, this, &AGalaga_USFX_L01Pawn::PawnEstadoDanado, 12.0f, false);
+
 }
 
 void AGalaga_USFX_L01Pawn::SetBounceBall(AActor* ball)

@@ -4,6 +4,8 @@
 class AGalaga_USFX_L01Pawn;
 #include "CoreMinimal.h"
 #include "NaveEnemigaNodriza.h"
+#include "MovimientoZigZag.h"
+#include "ObserverBoss.h"
 #include "NaveEnemigaNodrizaMadre.generated.h"
 
 /**
@@ -15,6 +17,7 @@ class GALAGA_USFX_L01_API ANaveEnemigaNodrizaMadre : public ANaveEnemigaNodriza
 	GENERATED_BODY()
 private:
 	int TiposNaves;
+	//UMovimientoZigZag* ZigZag;
 	UPROPERTY( VisibleAnywhere)
 	int posicionale;
 	bool ban = 1;
@@ -35,4 +38,6 @@ protected:
 	virtual void Mover(float DeltaTime)override;
 	virtual void Disparar();
 	virtual void Destruirse();
+private:
+	AObserverBoss* Observador; 
 };

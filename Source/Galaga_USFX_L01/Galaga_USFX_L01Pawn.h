@@ -12,6 +12,7 @@
 #include "ColisionType.h"
 #include "Logros.h" 
 #include "BControllerBall.h"
+#include "IEstadoPawn.h"
 #include "Galaga_USFX_L01Pawn.generated.h"
 class UActivacionBarrera;
 class UMovimientoABase;
@@ -39,7 +40,7 @@ class AGalaga_USFX_L01Pawn : public APawn, public IBControllerBall
 private:
 	UPROPERTY(VisibleAnywhere)
 	FVector posicionInicial;
-	int vida = 3;
+	int vida = 20;
 	AActor* logro1;
 	UActivacionBarrera* barrera1;
 	UMovimientoABase* movimiento1; //este movimiento tambien incluira el salto
@@ -48,11 +49,23 @@ private:
 
 	/// typo de colision
 	//int typeColision = 0; // 0 = defecto, 1 = destruccion, 2 = control, 3 = autodestruccion, 4 = invencible
-
+	IIEstadoPawn* estadoNormal;
+	IIEstadoPawn* estadoDanado;
+	IIEstadoPawn* estadoAturdido;
+	IIEstadoPawn* estadoConfundido;
+	IIEstadoPawn* estadoActual;
+	float cambioEstado = 0;
+	bool moverse = true;
+public:
+	void PawnEstadoNormal();
+	void PawnEstadoDanado();
+	void PawnEstadoAturdido();
+	void PawnEstadoConfundido();
+	void controles(bool activo=true);
 	
 public:
 	FORCEINLINE FVector GetPosicionNave() const { return GetActorLocation(); }
-	FORCEINLINE int GetVida()const { return vida; }
+	int GetVida()const { return vida; }
 	FORCEINLINE void SetVida(int _vida) { vida = _vida; }
 	FORCEINLINE void SetLogro(ALogros* _logro) { logro1 = _logro; }
 	//FORCEINLINE ALogros* GetLogro() { return logro1; }

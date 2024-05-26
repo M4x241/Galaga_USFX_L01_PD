@@ -4,13 +4,15 @@
 
 #include "CoreMinimal.h"
 #include "NaveEnemigaEspia.h"
+#include "INavesGuardianas.h"
+#include "ObserverBoss.h"
 #include "NaveEnemigaEspiaScout.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class GALAGA_USFX_L01_API ANaveEnemigaEspiaScout : public ANaveEnemigaEspia
+class GALAGA_USFX_L01_API ANaveEnemigaEspiaScout : public ANaveEnemigaEspia, public IINavesGuardianas
 {
 	GENERATED_BODY()
 public:
@@ -25,4 +27,8 @@ public:
 protected:
 	virtual void Mover(float DeltaTime)override;
 	virtual void Escapar();
+private:
+	AObserverBoss* ObserverBoss;//se suscriben al observador del boss
+	virtual void UpdateAction() override; 
+	void setPublicador(AObserverBoss* _ObserverBoss);
 };

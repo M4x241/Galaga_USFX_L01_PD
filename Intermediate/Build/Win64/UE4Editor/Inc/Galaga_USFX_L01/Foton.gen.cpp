@@ -17,6 +17,7 @@ void EmptyLinkFunctionForGeneratedCodeFoton() {}
 	GALAGA_USFX_L01_API UClass* Z_Construct_UClass_AFoton();
 	ENGINE_API UClass* Z_Construct_UClass_AActor();
 	UPackage* Z_Construct_UPackage__Script_Galaga_USFX_L01();
+	GALAGA_USFX_L01_API UClass* Z_Construct_UClass_UBMunicionLevel_NoRegister();
 // End Cross Module References
 	void AFoton::StaticRegisterNativesAFoton()
 	{
@@ -31,6 +32,7 @@ void EmptyLinkFunctionForGeneratedCodeFoton() {}
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
+		static const UE4CodeGen_Private::FImplementedInterfaceParams InterfaceParams[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UE4CodeGen_Private::FClassParams ClassParams;
 	};
@@ -44,6 +46,9 @@ void EmptyLinkFunctionForGeneratedCodeFoton() {}
 		{ "ModuleRelativePath", "Foton.h" },
 	};
 #endif
+		const UE4CodeGen_Private::FImplementedInterfaceParams Z_Construct_UClass_AFoton_Statics::InterfaceParams[] = {
+			{ Z_Construct_UClass_UBMunicionLevel_NoRegister, (int32)VTABLE_OFFSET(AFoton, IBMunicionLevel), false },
+		};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_AFoton_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<AFoton>::IsAbstract,
 	};
@@ -54,11 +59,11 @@ void EmptyLinkFunctionForGeneratedCodeFoton() {}
 		DependentSingletons,
 		nullptr,
 		nullptr,
-		nullptr,
+		InterfaceParams,
 		UE_ARRAY_COUNT(DependentSingletons),
 		0,
 		0,
-		0,
+		UE_ARRAY_COUNT(InterfaceParams),
 		0x009000A4u,
 		METADATA_PARAMS(Z_Construct_UClass_AFoton_Statics::Class_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UClass_AFoton_Statics::Class_MetaDataParams))
 	};
@@ -71,7 +76,7 @@ void EmptyLinkFunctionForGeneratedCodeFoton() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AFoton, 3729856871);
+	IMPLEMENT_CLASS(AFoton, 4056054932);
 	template<> GALAGA_USFX_L01_API UClass* StaticClass<AFoton>()
 	{
 		return AFoton::StaticClass();

@@ -17,6 +17,7 @@ void EmptyLinkFunctionForGeneratedCodeNaveEnemigaEspiaScout() {}
 	GALAGA_USFX_L01_API UClass* Z_Construct_UClass_ANaveEnemigaEspiaScout();
 	GALAGA_USFX_L01_API UClass* Z_Construct_UClass_ANaveEnemigaEspia();
 	UPackage* Z_Construct_UPackage__Script_Galaga_USFX_L01();
+	GALAGA_USFX_L01_API UClass* Z_Construct_UClass_UINavesGuardianas_NoRegister();
 // End Cross Module References
 	void ANaveEnemigaEspiaScout::StaticRegisterNativesANaveEnemigaEspiaScout()
 	{
@@ -31,6 +32,7 @@ void EmptyLinkFunctionForGeneratedCodeNaveEnemigaEspiaScout() {}
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
+		static const UE4CodeGen_Private::FImplementedInterfaceParams InterfaceParams[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UE4CodeGen_Private::FClassParams ClassParams;
 	};
@@ -45,6 +47,9 @@ void EmptyLinkFunctionForGeneratedCodeNaveEnemigaEspiaScout() {}
 		{ "ModuleRelativePath", "NaveEnemigaEspiaScout.h" },
 	};
 #endif
+		const UE4CodeGen_Private::FImplementedInterfaceParams Z_Construct_UClass_ANaveEnemigaEspiaScout_Statics::InterfaceParams[] = {
+			{ Z_Construct_UClass_UINavesGuardianas_NoRegister, (int32)VTABLE_OFFSET(ANaveEnemigaEspiaScout, IINavesGuardianas), false },
+		};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_ANaveEnemigaEspiaScout_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<ANaveEnemigaEspiaScout>::IsAbstract,
 	};
@@ -55,11 +60,11 @@ void EmptyLinkFunctionForGeneratedCodeNaveEnemigaEspiaScout() {}
 		DependentSingletons,
 		nullptr,
 		nullptr,
-		nullptr,
+		InterfaceParams,
 		UE_ARRAY_COUNT(DependentSingletons),
 		0,
 		0,
-		0,
+		UE_ARRAY_COUNT(InterfaceParams),
 		0x009000A4u,
 		METADATA_PARAMS(Z_Construct_UClass_ANaveEnemigaEspiaScout_Statics::Class_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UClass_ANaveEnemigaEspiaScout_Statics::Class_MetaDataParams))
 	};
@@ -72,7 +77,7 @@ void EmptyLinkFunctionForGeneratedCodeNaveEnemigaEspiaScout() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(ANaveEnemigaEspiaScout, 1137056422);
+	IMPLEMENT_CLASS(ANaveEnemigaEspiaScout, 278575696);
 	template<> GALAGA_USFX_L01_API UClass* StaticClass<ANaveEnemigaEspiaScout>()
 	{
 		return ANaveEnemigaEspiaScout::StaticClass();

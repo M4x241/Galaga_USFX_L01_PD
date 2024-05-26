@@ -12,6 +12,13 @@ void ANaveEnemigaNodrizaMadre::BeginPlay()
 	Super::BeginPlay();
 	disparos = GetWorld()->SpawnActor<AFacadeDisparos>(AFacadeDisparos::StaticClass());
 	FTimerHandle timeDisparo;
+	Observador = GetWorld()->SpawnActor<AObserverBoss>(AObserverBoss::StaticClass());
+	Observador->ObservarANodriza(this);
+
+	//disparos->SetDificultad("Facil");
+	//disparos->SetDificultad("Medio");
+	disparos->SetDificultad("Dificil");
+
 	GetWorldTimerManager().SetTimer(timeDisparo, this, &ANaveEnemigaNodrizaMadre::Disparar, 2.0f, true, 0.0f);
 }
 
@@ -29,6 +36,7 @@ ANaveEnemigaNodrizaMadre::ANaveEnemigaNodrizaMadre()
 	mallaNaveEnemiga->SetStaticMesh(ShipMesh.Object);
 	SetActorRotation(FRotator(180, 0, 0));
 	SetActorScale3D(FVector(5,5,5));
+	//ZigZag = CreateDefaultSubobject<UMovimientoZigZag>(TEXT("ZigZag"));
 	
 }
 
@@ -55,7 +63,7 @@ void ANaveEnemigaNodrizaMadre::Mover(float DeltaTime)
 
 void ANaveEnemigaNodrizaMadre::Disparar()
 {
-	disparos->Launch();
+	disparos->Launch(GetActorLocation());
 }
 
 void ANaveEnemigaNodrizaMadre::Destruirse()

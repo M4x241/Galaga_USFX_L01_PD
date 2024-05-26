@@ -8,6 +8,11 @@ void ANaveEnemigaEspiaScout::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	Mover(DeltaTime);
+	if (energia <= 0)
+	{
+		ObserverBoss->RemoveGuardian(this);
+		Destroy();
+	}
 }
 
 
@@ -20,4 +25,15 @@ void ANaveEnemigaEspiaScout::Mover(float DeltaTime)
 
 void ANaveEnemigaEspiaScout::Escapar()
 {
+}
+
+void ANaveEnemigaEspiaScout::UpdateAction()
+{
+	//llamar a la funcion de mover al boss
+}
+
+void ANaveEnemigaEspiaScout::setPublicador(AObserverBoss* _ObserverBoss)
+{
+	ObserverBoss = _ObserverBoss;
+	ObserverBoss->AddGuardian(this);
 }

@@ -67,7 +67,7 @@ void AStage1::Tick(float DeltaTime)
 
 void AStage1::getBomba()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Blue, TEXT("Bomba"));
+	//GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Blue, TEXT("Bomba"));
 	float x = rand() % 1500 - 1500;
 	float y = rand() % 1100 - 550;
 	FVector posicion = FVector(x, y, 300);
