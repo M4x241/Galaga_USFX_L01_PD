@@ -40,7 +40,7 @@ void AFacadeDisparos::Recargar()
 	int municionAleatoria=0;
 	for (int i = 0; i < 15; i++)
 	{//se almacena en el array de manera aleatoria los 3 tipos de municion
-		if (i % 4 == 0 || i == 0) {
+		if (i % 3 == 0 ) {
 			municionAleatoria = rand() % 3;
 		}
 		if (municionAleatoria == 0) {
@@ -66,12 +66,12 @@ void AFacadeDisparos::Launch(FVector posicionNave)
 		if (municion[0].Equals("Laser"))
 		{
 			laser=GetWorld()->SpawnActor<ALaser>(ALaser::StaticClass(), posicionNave + FVector(-300, 0, 0), FRotator::ZeroRotator);
-			municionLevel= Cast<IBMunicionLevel>(laser);
+			//municionLevel= Cast<IBMunicionLevel>(laser);
 		}
 		else if (municion[0].Equals("Bomba"))
 		{
 			bomba = GetWorld()->SpawnActor<ABombaC>(ABombaC::StaticClass(), posicionNave + FVector(-500, 0, 0), FRotator::ZeroRotator);
-			municionLevel = Cast<IBMunicionLevel>(bomba);
+			//municionLevel = Cast<IBMunicionLevel>(bomba);
 			
 
 		}
@@ -79,28 +79,109 @@ void AFacadeDisparos::Launch(FVector posicionNave)
 		{
 			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Foton"));
 			foton = GetWorld()->SpawnActor<AFoton>(AFoton::StaticClass(), posicionNave + FVector(-300, -200, 0), FRotator::ZeroRotator);
-			foton->SetLevelMunicion(dificultad);
+			//foton->SetLevelMunicion(dificultad);
 			if (municion.Num() > 1) {
+				modificarMunicion(); 
 				municion.RemoveAt(0);
 				foton= GetWorld()->SpawnActor<AFoton>(AFoton::StaticClass(), posicionNave + FVector(-300, 200, 0), FRotator::ZeroRotator);
-				foton->SetLevelMunicion(dificultad);
+				//foton->SetLevelMunicion(dificultad);
 			}
 		}
 		else {
 			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("MunicionInvalida"));
 		}
-		if (municionLevel) {
+		/*if (municionLevel) {
 			municionLevel->SetLevelMunicion(dificultad);
-		}
+		}*////no se si borrar esto
+		modificarMunicion();
 
 		municion.RemoveAt(0);
 	}
 	else {//si esta vacio el array, pide una recarga al otro facade
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("No hay municion"));
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Recargando"));
-		//municion = recargar->recargarmuicion();
-
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("No hay municion"));
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, TEXT("Recargando"));
 		Recargar();
+	}
+}
+
+void AFacadeDisparos::modificarMunicion()
+{
+	if(dificultad=="Facil")
+	{
+		Facil();
+	}
+	else if (dificultad == "Medio")
+	{
+		Medio();
+	}
+	else if (dificultad == "Dificil")
+
+
+	{
+		Dificil();
+	}
+}
+
+void AFacadeDisparos::Facil()
+{
+	if (municion[0].Equals("Bomba"))
+	{
+		bomba->setAturdimiento(true);
+		bomba->setDamage(15);
+		bomba->setVelocidad(600);
+
+	}
+	else if(municion[0].Equals("Laser"))
+	{
+		laser->SetVelocidad(600);
+		laser->SetPotencia(400);
+	}
+	else if(municion[0].Equals("Foton"))
+	{
+		foton->setVelocidad(400);
+		foton->setDamage(5);
+	}
+}
+
+void AFacadeDisparos::Medio()
+{
+	if (municion[0].Equals("Bomba"))
+	{
+		bomba->setEnloquecer(true);
+		bomba->setDamage(25);
+		bomba->setVelocidad(800);
+	}
+	else if (municion[0].Equals("Laser"))
+	{
+		laser->SetVelocidad(800);
+		laser->SetPotencia(600);
+	}
+	else if (municion[0].Equals("Foton"))
+	{
+		foton->setVelocidad(800);
+		foton->setDamage(10);
+		foton->setZigActivo(true);
+	}
+}
+
+void AFacadeDisparos::Dificil()
+{
+	if (municion[0].Equals("Bomba"))
+	{
+		bomba->ActDetonador();
+		bomba->setDamage(50);
+		bomba->setVelocidad(1000);
+	}
+	else if (municion[0].Equals("Laser"))
+	{
+		laser->SetVelocidad(1000);
+		laser->SetPotencia(800);
+	}
+	else if (municion[0].Equals("Foton"))
+	{
+		foton->setVelocidad(800);
+		foton->setDamage(15);
+		foton->setZigActivoVertical(true);
 	}
 }
 

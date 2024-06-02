@@ -1,0 +1,37 @@
+D:\DOCUMENTOS\Galaga_USFX_L01\Intermediate\Build\Win64\UE4Editor\Development\Galaga_USFX_L01\Definitions.Galaga_USFX_L01.h
+D:\DOCUMENTOS\Galaga_USFX_L01\Source\Galaga_USFX_L01\NaveEnemigaTransporte.h
+D:\DOCUMENTOS\Galaga_USFX_L01\Source\Galaga_USFX_L01\NaveEnemiga.h
+D:\DOCUMENTOS\Galaga_USFX_L01\Source\Galaga_USFX_L01\Galaga_USFX_L01Pawn.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/Character.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/CharacterMovementReplication.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\CharacterMovementReplication.generated.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/RootMotionSource.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\RootMotionSource.generated.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\Character.generated.h
+D:\DOCUMENTOS\Galaga_USFX_L01\Source\Galaga_USFX_L01\InventarioComponent.h
+D:\DOCUMENTOS\Galaga_USFX_L01\Source\Galaga_USFX_L01\mucionV2.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\Engine/StaticMeshActor.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\StaticMeshActor.generated.h
+D:\DOCUMENTOS\Galaga_USFX_L01\Intermediate\Build\Win64\UE4Editor\Inc\Galaga_USFX_L01\mucionV2.generated.h
+D:\DOCUMENTOS\Galaga_USFX_L01\Intermediate\Build\Win64\UE4Editor\Inc\Galaga_USFX_L01\InventarioComponent.generated.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/PlayerInput.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Public\GestureRecognizer.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Public\KeyState.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\PlayerInput.generated.h
+D:\DOCUMENTOS\Galaga_USFX_L01\Source\Galaga_USFX_L01\ActivacionBarrera.h
+D:\DOCUMENTOS\Galaga_USFX_L01\Source\Galaga_USFX_L01\BarreraDeProteccion.h
+D:\DOCUMENTOS\Galaga_USFX_L01\Intermediate\Build\Win64\UE4Editor\Inc\Galaga_USFX_L01\BarreraDeProteccion.generated.h
+D:\DOCUMENTOS\Galaga_USFX_L01\Intermediate\Build\Win64\UE4Editor\Inc\Galaga_USFX_L01\ActivacionBarrera.generated.h
+D:\DOCUMENTOS\Galaga_USFX_L01\Source\Galaga_USFX_L01\MovimientoABase.h
+D:\DOCUMENTOS\Galaga_USFX_L01\Intermediate\Build\Win64\UE4Editor\Inc\Galaga_USFX_L01\MovimientoABase.generated.h
+D:\DOCUMENTOS\Galaga_USFX_L01\Source\Galaga_USFX_L01\ColisionType.h
+D:\DOCUMENTOS\Galaga_USFX_L01\Intermediate\Build\Win64\UE4Editor\Inc\Galaga_USFX_L01\ColisionType.generated.h
+D:\DOCUMENTOS\Galaga_USFX_L01\Source\Galaga_USFX_L01\Logros.h
+D:\DOCUMENTOS\Galaga_USFX_L01\Intermediate\Build\Win64\UE4Editor\Inc\Galaga_USFX_L01\Logros.generated.h
+D:\DOCUMENTOS\Galaga_USFX_L01\Source\Galaga_USFX_L01\BControllerBall.h
+D:\DOCUMENTOS\Galaga_USFX_L01\Intermediate\Build\Win64\UE4Editor\Inc\Galaga_USFX_L01\BControllerBall.generated.h
+D:\DOCUMENTOS\Galaga_USFX_L01\Source\Galaga_USFX_L01\IEstadoPawn.h
+D:\DOCUMENTOS\Galaga_USFX_L01\Intermediate\Build\Win64\UE4Editor\Inc\Galaga_USFX_L01\IEstadoPawn.generated.h
+D:\DOCUMENTOS\Galaga_USFX_L01\Intermediate\Build\Win64\UE4Editor\Inc\Galaga_USFX_L01\Galaga_USFX_L01Pawn.generated.h
+D:\DOCUMENTOS\Galaga_USFX_L01\Intermediate\Build\Win64\UE4Editor\Inc\Galaga_USFX_L01\NaveEnemiga.generated.h
+D:\DOCUMENTOS\Galaga_USFX_L01\Intermediate\Build\Win64\UE4Editor\Inc\Galaga_USFX_L01\NaveEnemigaTransporte.generated.h

@@ -38,6 +38,13 @@ public:
 	AStage2*  stage2;
 	AHighScore* highScore;
 	class ANaveEnemigaNodrizaMadre* NaveMadre;
+
+
+	///strategy
+	class AFormacionTortuga* tortuga;
+	class AFormacionEstrella* estrella;
+	class AFormacionDiamante* diamante;
+	class ALiderEscuadron* lider;
 public:	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;

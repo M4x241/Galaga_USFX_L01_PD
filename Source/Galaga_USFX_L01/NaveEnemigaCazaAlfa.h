@@ -21,7 +21,7 @@ private:
 	int banderaA=3;
 	UPROPERTY(VisibleAnywhere);
 	FVector posicionalfa;
-	UMovimientoZigZag* MovimientoZigZag;
+	//UMovimientoZigZag* MovimientoZigZag;
 public:
 	virtual void Tick(float DeltaTime) override;
 	ANaveEnemigaCazaAlfa();

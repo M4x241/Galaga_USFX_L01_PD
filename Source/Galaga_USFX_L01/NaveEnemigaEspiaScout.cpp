@@ -53,5 +53,5 @@ void ANaveEnemigaEspiaScout::moverseANodriza(float DeltaTime)
 		FVector direccion = posicionNodriza - GetActorLocation();
 		direccion.Normalize();
 		SetActorLocation(GetActorLocation() + direccion *800 * DeltaTime);
-	}
+	} 
 }

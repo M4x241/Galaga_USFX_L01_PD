@@ -88,9 +88,7 @@ void ABombaC::detonarNave()
 				auxActor->Destroy();
 			}
 		}
-
 		//segundo metodo
-		
 		//tomar todos los objetos que esten en un radio de explosion
 		//TArray<AActor*> actores;
 		//GetOverlappingActors(actores);
@@ -109,5 +107,36 @@ void ABombaC::detonarNave()
 		//	}
 		//}
 	}
+	if (aturdimiento) {
+		TArray<AActor*> ActorsToDestroy;
+		FVector BombLocation = GetActorLocation();
+		float ExplosionRadius = 200.0f;
+		UGameplayStatics::GetAllActorsOfClass(GetWorld(), AActor::StaticClass(), ActorsToDestroy);
+
+		for (AActor* Actor : ActorsToDestroy)
+		{
+			AActor* auxActor = Actor;
+			AGalaga_USFX_L01Pawn* nave = Cast<AGalaga_USFX_L01Pawn>(auxActor);
+			if (nave && auxActor->GetDistanceTo(this) <= ExplosionRadius) {
+				nave->PawnEstadoAturdido();
+			}
+		}
+	}
+	if (enloquecer) {
+		TArray<AActor*> ActorsToDestroy;
+		FVector BombLocation = GetActorLocation();
+		float ExplosionRadius = 200.0f;
+		UGameplayStatics::GetAllActorsOfClass(GetWorld(), AActor::StaticClass(), ActorsToDestroy);
+
+		for (AActor* Actor : ActorsToDestroy)
+		{
+			AActor* auxActor = Actor;
+			AGalaga_USFX_L01Pawn* nave = Cast<AGalaga_USFX_L01Pawn>(auxActor); 
+			if (nave && auxActor->GetDistanceTo(this) <= ExplosionRadius) { 
+				nave->PawnEstadoAturdido(); 
+			}
+		}
+	}
+	
 }
 

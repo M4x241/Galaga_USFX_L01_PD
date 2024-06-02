@@ -23,13 +23,21 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+private:
+	float varTick = 0;
+	float velocidad = 0;
+	float potenc = 400;
 
 public:
 	void tipoLaser();
 	void Potencia();
 	void Estiramiento(float DeltaTime);
-	float varTick= 0;
-	float velocidad = 0;
 	virtual void SetLevelMunicion(FString dif) override;
+	//getter
+	float GetPotencia(){return potenc;}
+	float GetVelocidad(){return velocidad;}
+	//setters
+	void SetPotencia(float pot){ potenc = pot;}
+	void SetVelocidad(float vel){ velocidad = vel;}
 
 };

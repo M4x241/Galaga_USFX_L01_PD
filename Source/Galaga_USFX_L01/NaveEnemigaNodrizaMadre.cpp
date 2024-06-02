@@ -14,8 +14,8 @@ void ANaveEnemigaNodrizaMadre::BeginPlay()
 	FTimerHandle timeDisparo;
 	
 
-	disparos->SetDificultad("Facil");
-	//disparos->SetDificultad("Medio");
+	//disparos->SetDificultad("Facil");
+	disparos->SetDificultad("Medio");
 	//disparos->SetDificultad("Dificil");
 
 	GetWorldTimerManager().SetTimer(timeDisparo, this, &ANaveEnemigaNodrizaMadre::Disparar, 2.0f, true, 0.0f);

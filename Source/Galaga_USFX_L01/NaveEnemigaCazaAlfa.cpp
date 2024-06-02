@@ -22,12 +22,12 @@ void ANaveEnemigaCazaAlfa::Tick(float DeltaTime)
 
 ANaveEnemigaCazaAlfa::ANaveEnemigaCazaAlfa()
 {
-	static ConstructorHelpers::FObjectFinder<UStaticMesh> ShipMesh(TEXT("StaticMesh'/Game/Meshes/EnemyLevel4.EnemyLevel4'"));
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> ShipMesh(TEXT("StaticMesh'/Game/Meshes/Propios/0406c8de6950_21458481dc32_crea_naves_de_batal_fbx/21458481dc32_crea_naves_de_batal.21458481dc32_crea_naves_de_batal'"));
 	mallaNaveEnemiga->SetStaticMesh(ShipMesh.Object);
 	posicionalfa = GetActorLocation();
 	
-	MovimientoZigZag = CreateDefaultSubobject<UMovimientoZigZag>(TEXT("Movimiento ZigZag"));
-	MovimientoZigZag->Iniciando(GetPosicion());
+	//MovimientoZigZag = CreateDefaultSubobject<UMovimientoZigZag>(TEXT("Movimiento ZigZag"));
+	//MovimientoZigZag->Iniciando(GetPosicion());
 	//****************************##############################################ERROR
 	//PrimaryActorTick.bCanEverTick = true; ///esta cosa al activarla en la hija de la hija es que no se puede 
 }

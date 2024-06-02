@@ -67,5 +67,4 @@ void AObserverBoss::ObservarANodriza(ANaveEnemigaNodriza* _NodrizaObservada)
 {
 	NodrizaObservada = _NodrizaObservada;
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, TEXT("Nodriza observada"));
-
 }

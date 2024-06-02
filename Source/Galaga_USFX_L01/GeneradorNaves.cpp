@@ -18,6 +18,11 @@
 #include "FabricaEnemiga.h"
 #include "INavesGuardianas.h"
 #include "Components/StaticMeshComponent.h"
+#include "IEstrategiasScuadras.h"
+#include "FormacionTortuga.h"
+#include "FormacionDiamante.h"
+#include "FormacionEstrella.h"
+#include "LiderEscuadron.h"
 #include "Kismet/GameplayStatics.h"
 
 // Sets default values for this component's properties
@@ -40,11 +45,21 @@ void UGeneradorNaves::generarNave()
 
 		AFabricaMxCorporation* fabrica = World->SpawnActor<AFabricaEnemiga>(AFabricaEnemiga::StaticClass());
 		ANaveEnemiga* nave;
+		int totalNaves=0;
+		int formacionRandom = rand() % 2;
+		if (formacionRandom == 0) {//Diamond
+			totalNaves = 30 / 3;
+			lider->setFormacion(diamante);
+		}
+		else if (formacionRandom == 1) {//Turtle
+			totalNaves = 12 / 3;
+			lider->setFormacion(tortuga);
+		}
 
 		int tipNave = 0;
 		for (int i = 0; i < 3; i++) {
 			
-				for (int j = 0; j < 3; j++) {
+				for (int j = 0; j < totalNaves; j++) {
 					tipNave = rand() % 4;
 					nave = fabrica->EnsambladoNave(tipNave);
 					if (nave) {
@@ -55,6 +70,7 @@ void UGeneradorNaves::generarNave()
 				}
 			
 		}
+		lider->FormarEscuadron(TANaveEnemigamix); 
 		
 	}
 	
@@ -96,7 +112,7 @@ void UGeneradorNaves::BeginPlay()
 		Enginer->setConstructorEscenario(stage1);
 		Enginer->makeLevel(level);
 	}
-
+	//OBSERVER
 	NaveMadre = GetWorld()->SpawnActor<ANaveEnemigaNodrizaMadre>(FVector(1800, 1000, 200), FRotator(0, 0, 0));
 	Observador = GetWorld()->SpawnActor<AObserverBoss>(AObserverBoss::StaticClass());
 	Observador->ObservarANodriza(NaveMadre);
@@ -108,7 +124,11 @@ void UGeneradorNaves::BeginPlay()
 		}
 	}
 	// ...
-	
+	//ESTRATEGIA
+	tortuga = GetWorld()->SpawnActor<AFormacionTortuga>(AFormacionTortuga::StaticClass());
+	diamante = GetWorld()->SpawnActor<AFormacionDiamante>(AFormacionDiamante::StaticClass());
+	estrella = GetWorld()->SpawnActor<AFormacionEstrella>(AFormacionEstrella::StaticClass());
+	lider = GetWorld()->SpawnActor<ALiderEscuadron>(ALiderEscuadron::StaticClass());
 }
 
 

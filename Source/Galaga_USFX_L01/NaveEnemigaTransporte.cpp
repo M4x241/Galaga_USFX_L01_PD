@@ -5,7 +5,7 @@
 
 ANaveEnemigaTransporte::ANaveEnemigaTransporte()
 {
-	static ConstructorHelpers::FObjectFinder<UStaticMesh> ShipMesh(TEXT("StaticMesh'/Game/Meshes/Propios/e47287d381ca_b76070cea542_nave_del_3000__hech_fbx/b76070cea542_nave_del_3000__hech.b76070cea542_nave_del_3000__hech'"));
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> ShipMesh(TEXT("StaticMesh'/Game/Meshes/Propios/993543606934_4ece67099b81_create_a_ship__one__fbx/delta.delta'"));
 	mallaNaveEnemiga->SetStaticMesh(ShipMesh.Object);
 }
 

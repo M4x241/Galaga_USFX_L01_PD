@@ -13,7 +13,7 @@ void ANaveEnemigaCazaDelta::Tick(float DeltaTime)
 
 ANaveEnemigaCazaDelta::ANaveEnemigaCazaDelta()
 {
-	static ConstructorHelpers::FObjectFinder<UStaticMesh> ShipMesh(TEXT("StaticMesh'/Game/Meshes/EnemyLevel3.EnemyLevel3'"));
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> ShipMesh(TEXT("StaticMesh'/Game/Meshes/Propios/f045d777fd00_6ab4f1387906_CREA_UNA_NAVE_NODRI_fbx/6ab4f1387906_CREA_UNA_NAVE_NODRI.6ab4f1387906_CREA_UNA_NAVE_NODRI'"));
 	//// Create the mesh component
 	//mallaNaveEnemiga = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ShipMesh"));
 	mallaNaveEnemiga->SetStaticMesh(ShipMesh.Object);

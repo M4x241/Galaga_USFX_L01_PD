@@ -44,7 +44,7 @@ void ALaser::Estiramiento(float DeltaTime)
 	if (varTick >= 1.5f)
 	{
 		FVector esti = GetActorScale3D();
-		esti.X += 800 * DeltaTime;
+		esti.X += potenc * DeltaTime;
 		SetActorRelativeScale3D(esti);
 	}
 	if (varTick >= 2.5) {

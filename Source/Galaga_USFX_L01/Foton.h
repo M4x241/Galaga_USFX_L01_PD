@@ -28,11 +28,24 @@ public:
 	void TipoFoton();
 	void Rotar(float Deltatime);
 	void zigzag(float DeltaTime);
+	int GetVelocidad(){return velocidad;}
+	void setVelocidad(int vel){velocidad = vel;}
+	void zigzagVertical(float DeltaTime);
 	virtual void SetLevelMunicion(FString dif) override;
+	//getters
+	bool getZigActivo(){return ZigActivo;}
+	bool getZigActivoVertical(){return ZigActivoVertical;}
+	float getDamage(){return damage;}
+	//setters
+	void setZigActivo(bool zig){ZigActivo = zig;}
+	void setZigActivoVertical(bool zig){ZigActivoVertical = zig;}
+	void setDamage(float dam){damage = dam;}
 
 private:
 	int velocidad = 800;
-	float ZigActivo;
+	float damage = 20;
+	bool ZigActivo;
+	bool ZigActivoVertical = false;
 	int ID = 1;
 	FVector posIn;
 };

@@ -1,0 +1,13 @@
+D:\DOCUMENTOS\Galaga_USFX_L01\Intermediate\Build\Win64\UE4Editor\Development\Galaga_USFX_L01\Definitions.Galaga_USFX_L01.h
+D:\DOCUMENTOS\Galaga_USFX_L01\Source\Galaga_USFX_L01\FacadeDisparos.h
+D:\DOCUMENTOS\Galaga_USFX_L01\Intermediate\Build\Win64\UE4Editor\Inc\Galaga_USFX_L01\FacadeDisparos.generated.h
+D:\DOCUMENTOS\Galaga_USFX_L01\Source\Galaga_USFX_L01\BombaC.h
+D:\DOCUMENTOS\Galaga_USFX_L01\Source\Galaga_USFX_L01\BMunicionLevel.h
+D:\DOCUMENTOS\Galaga_USFX_L01\Intermediate\Build\Win64\UE4Editor\Inc\Galaga_USFX_L01\BMunicionLevel.generated.h
+D:\DOCUMENTOS\Galaga_USFX_L01\Intermediate\Build\Win64\UE4Editor\Inc\Galaga_USFX_L01\BombaC.generated.h
+D:\DOCUMENTOS\Galaga_USFX_L01\Source\Galaga_USFX_L01\Foton.h
+D:\DOCUMENTOS\Galaga_USFX_L01\Intermediate\Build\Win64\UE4Editor\Inc\Galaga_USFX_L01\Foton.generated.h
+D:\DOCUMENTOS\Galaga_USFX_L01\Source\Galaga_USFX_L01\Laser.h
+D:\DOCUMENTOS\Galaga_USFX_L01\Intermediate\Build\Win64\UE4Editor\Inc\Galaga_USFX_L01\Laser.generated.h
+D:\DOCUMENTOS\Galaga_USFX_L01\Source\Galaga_USFX_L01\FacadeAdRecargar.h
+D:\DOCUMENTOS\Galaga_USFX_L01\Intermediate\Build\Win64\UE4Editor\Inc\Galaga_USFX_L01\FacadeAdRecargar.generated.h

@@ -30,7 +30,7 @@ void AFoton::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 	Rotar(DeltaTime);
 	zigzag(DeltaTime);
-
+	zigzagVertical(DeltaTime);
 }
 
 void AFoton::TipoFoton()
@@ -49,7 +49,6 @@ void AFoton::zigzag(float DeltaTime)
 {
 	if (ZigActivo) {
 		FVector pos = GetActorLocation();
-		//una condicional para que se mueva de izquierda a derecha unos 200 puntos, en el eje y
 		if (pos.Y >= posIn.Y + 50) {
 			ID = -1;
 		}
@@ -60,6 +59,21 @@ void AFoton::zigzag(float DeltaTime)
 		SetActorLocation(pos);
 	}
 	
+}
+
+void AFoton::zigzagVertical(float DeltaTime)
+{
+	if (ZigActivoVertical) {
+		FVector pos = GetActorLocation();
+		if (pos.Z >= posIn.Z + 15) {
+			ID = -1;
+		}
+		else if (pos.Z <= posIn.Z - 15) {
+			ID = 1;
+		}
+		pos.Z += 800 * DeltaTime * ID;
+		SetActorLocation(pos);
+	}
 }
 
 void AFoton::SetLevelMunicion(FString dif)

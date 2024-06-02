@@ -31,9 +31,28 @@ public:
 	virtual void SetLevelMunicion(FString dif) override;
 	void ActDetonador(){ detonador = true; }
 	FORCEINLINE void detonarNave(); 
+	//getters
+	FORCEINLINE bool getDetonador() { return detonador; }
+	FORCEINLINE bool getAturdimiento() { return aturdimiento; }
+	FORCEINLINE bool getEnloquecer() { return enloquecer; }
+	FORCEINLINE bool getExplotar() { return explotar; }
+	FORCEINLINE float getDamage() { return damage; }
+	FORCEINLINE float getVelocidad() { return velocidad; }
+	FORCEINLINE float getRatioExplosion() { return RatioExplosion; }
+	//setters
+	FORCEINLINE void setAturdimiento(bool atur) { aturdimiento = atur; }
+	FORCEINLINE void setEnloquecer(bool enloq) { enloquecer = enloq; }
+	FORCEINLINE void setExplotar(bool expl) { explotar = expl; }
+	FORCEINLINE void setDamage(float dam) { damage = dam; }
+	FORCEINLINE void setVelocidad(float vel) { velocidad = vel; }
+	FORCEINLINE void setRatioExplosion(float ratio) { RatioExplosion = ratio; }
 private:
 	float RatioExplosion= 500; 
 	float velocidad = 800;
 	bool detonador = false;
+	bool aturdimiento = false;
+	bool enloquecer = false;
+	bool explotar = false;
+	float damage = 40;
 
 };

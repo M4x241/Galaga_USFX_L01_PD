@@ -12,7 +12,7 @@ class AGalaga_USFX_L01Pawn;
  * 
  */
 UCLASS()
-class GALAGA_USFX_L01_API ANaveEnemigaNodrizaMadre : public ANaveEnemigaNodriza
+class GALAGA_USFX_L01_API ANaveEnemigaNodrizaMadre : public ANaveEnemigaNodriza //clocth tower, // nave enemiga nodriza madre
 {
 	GENERATED_BODY()
 private:

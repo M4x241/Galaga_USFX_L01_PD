@@ -353,22 +353,6 @@ void AGalaga_USFX_L01Pawn::Tick(float DeltaSeconds)
 	if (moverse) {
 		const float ForwardValue = GetInputAxisValue(MoveForwardBinding);
 		const float RightValue = GetInputAxisValue(MoveRightBinding);
-		/*if (ForwardValue != 0 || RightValue != 0)
-		{
-			if (RightValue == 1) {
-				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("RightValue: ") + FString::SanitizeFloat(RightValue));
-			}
-			else if (RightValue == -1) {
-				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("RightValue: ") + FString::SanitizeFloat(RightValue));
-			}
-			if (ForwardValue == 1) {
-				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("ForwardValue: ") + FString::SanitizeFloat(ForwardValue));
-			}
-			else if (ForwardValue == -1) {
-				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("ForwardValue: ") + FString::SanitizeFloat(ForwardValue));
-			}
-		}*/
-
 		// Clamp max size so that (X=1, Y=1) doesn't cause faster movement in diagonal directions
 		const FVector MoveDirection = FVector(ForwardValue, RightValue, 0.f).GetClampedToMaxSize(1.0f);
 
@@ -453,13 +437,13 @@ void AGalaga_USFX_L01Pawn::BeginPlay()
 	Super::BeginPlay();
 	//posicionInicial = GetActorLocation(); 
 	posicionInicial = FVector(int(GetActorLocation().X), int(GetActorLocation().Y), int(GetActorLocation().Z));
-	PawnEstadoNormal();
+	PawnEstadoNormal();/*
 	FTimerHandle TimerHandle;
 	FTimerHandle TimerHandle1;
 	FTimerHandle TimerHandle2;
 	GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &AGalaga_USFX_L01Pawn::PawnEstadoConfundido, 3.0f, false);
 	GetWorld()->GetTimerManager().SetTimer(TimerHandle1, this, &AGalaga_USFX_L01Pawn::PawnEstadoAturdido, 6.5f, false);
-	GetWorld()->GetTimerManager().SetTimer(TimerHandle2, this, &AGalaga_USFX_L01Pawn::PawnEstadoDanado, 12.0f, false);
+	GetWorld()->GetTimerManager().SetTimer(TimerHandle2, this, &AGalaga_USFX_L01Pawn::PawnEstadoDanado, 12.0f, false);*/
 
 }
 

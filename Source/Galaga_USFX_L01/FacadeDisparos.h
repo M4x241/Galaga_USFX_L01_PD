@@ -29,7 +29,12 @@ private:
 	void Recargar();
 public:
 	void Launch(FVector posicionNave);
-	void SetDificultad(FString dif){ dificultad = dif; }
+	void SetDificultad(FString dif) { dificultad = dif; }
+private:
+	void modificarMunicion();
+	void Facil();
+	void Medio();
+	void Dificil();
 
 public:	
 	// Called every frame
