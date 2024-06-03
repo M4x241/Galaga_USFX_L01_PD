@@ -46,12 +46,16 @@ void UGeneradorNaves::generarNave()
 		AFabricaMxCorporation* fabrica = World->SpawnActor<AFabricaEnemiga>(AFabricaEnemiga::StaticClass());
 		ANaveEnemiga* nave;
 		int totalNaves=0;
-		int formacionRandom = rand() % 2;
+		int formacionRandom = rand() % 3;
 		if (formacionRandom == 0) {//Diamond
 			totalNaves = 30 / 3;
 			lider->setFormacion(diamante);
 		}
 		else if (formacionRandom == 1) {//Turtle
+			totalNaves = 21 / 3;
+			lider->setFormacion(estrella);
+		}
+		else if (formacionRandom == 2) {//Turtle
 			totalNaves = 12 / 3;
 			lider->setFormacion(tortuga);
 		}

@@ -24,6 +24,23 @@ void AFormacionEstrella::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 }
+void AFormacionEstrella::AplicarFormacion(TArray<ANaveEnemiga*> Escuadron)
+{
+    int height = 7;
+    AActor* navepos = nullptr;
+    for (int i = 0; i < height; i++) {
+        for (int j = 0; j < height; j++) {
+            if (j == i || j == height - i - 1 || j == 3 || i == 3) {
+                if (Escuadron.Num() > 0) {
+                    FVector Posicion = FVector(i * 300, j * 300, 200);
+                    navepos = Cast<AActor>(Escuadron[0]);
+                    navepos->SetActorLocation(Posicion);
+                    Escuadron.RemoveAt(0);
+                }
+            }
+        }
+    }
+}
 /*
 *  *  *
  * * *

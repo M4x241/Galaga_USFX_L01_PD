@@ -5,10 +5,11 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "NaveEnemiga.h"
+#include "IEstrategiasScuadras.h"
 #include "FormacionEstrella.generated.h"
 
 UCLASS()
-class GALAGA_USFX_L01_API AFormacionEstrella : public AActor
+class GALAGA_USFX_L01_API AFormacionEstrella : public AActor, public IIEstrategiasScuadras
 {
 	GENERATED_BODY()
 	
@@ -23,5 +24,6 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+	virtual void AplicarFormacion(TArray<ANaveEnemiga*> Escuadron) override;
 
 };
