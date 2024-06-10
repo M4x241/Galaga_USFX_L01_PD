@@ -24,6 +24,7 @@
 #include "D:/DOCUMENTOS/Galaga_USFX_L01/Intermediate/Build/Win64/UE4Editor/Inc/Galaga_USFX_L01/FacadeAdRecargar.gen.cpp"
 #include "D:/DOCUMENTOS/Galaga_USFX_L01/Intermediate/Build/Win64/UE4Editor/Inc/Galaga_USFX_L01/FacadeDisparos.gen.cpp"
 #include "D:/DOCUMENTOS/Galaga_USFX_L01/Intermediate/Build/Win64/UE4Editor/Inc/Galaga_USFX_L01/FormacionDiamante.gen.cpp"
+#include "D:/DOCUMENTOS/Galaga_USFX_L01/Intermediate/Build/Win64/UE4Editor/Inc/Galaga_USFX_L01/FormacionEstrella.gen.cpp"
 #include "D:/DOCUMENTOS/Galaga_USFX_L01/Intermediate/Build/Win64/UE4Editor/Inc/Galaga_USFX_L01/FormacionTortuga.gen.cpp"
 #include "D:/DOCUMENTOS/Galaga_USFX_L01/Intermediate/Build/Win64/UE4Editor/Inc/Galaga_USFX_L01/Foton.gen.cpp"
 #include "D:/DOCUMENTOS/Galaga_USFX_L01/Intermediate/Build/Win64/UE4Editor/Inc/Galaga_USFX_L01/Galaga_USFX_L01GameMode.gen.cpp"

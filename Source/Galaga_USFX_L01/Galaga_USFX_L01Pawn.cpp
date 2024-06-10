@@ -374,7 +374,6 @@ void AGalaga_USFX_L01Pawn::Tick(float DeltaSeconds)
 				const FVector Normal2D = Hit.Normal.GetSafeNormal2D();
 				const FVector Deflection = FVector::VectorPlaneProject(Movement, Normal2D) * (1.f - Hit.Time);
 				RootComponent->MoveComponent(Deflection, NewRotation, true);
-				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Hit: ") + Hit.Normal.ToString());
 			}
 		}
 		// Create fire direction vector
@@ -437,13 +436,8 @@ void AGalaga_USFX_L01Pawn::BeginPlay()
 	Super::BeginPlay();
 	//posicionInicial = GetActorLocation(); 
 	posicionInicial = FVector(int(GetActorLocation().X), int(GetActorLocation().Y), int(GetActorLocation().Z));
-	PawnEstadoNormal();/*
-	FTimerHandle TimerHandle;
-	FTimerHandle TimerHandle1;
-	FTimerHandle TimerHandle2;
-	GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &AGalaga_USFX_L01Pawn::PawnEstadoConfundido, 3.0f, false);
-	GetWorld()->GetTimerManager().SetTimer(TimerHandle1, this, &AGalaga_USFX_L01Pawn::PawnEstadoAturdido, 6.5f, false);
-	GetWorld()->GetTimerManager().SetTimer(TimerHandle2, this, &AGalaga_USFX_L01Pawn::PawnEstadoDanado, 12.0f, false);*/
+	PawnEstadoNormal();
+	SetActorLocation(FVector(17500, 100, 200));
 
 }
 

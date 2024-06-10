@@ -17,6 +17,7 @@
 #include <ctime>
 #include "ProyectilEnemigo.h"
 #include "BallDemoledora.h"
+#include "CampoAsteroides.h"
 #include "Kismet/GameplayStatics.h"
 
 AGalaga_USFX_L01GameMode::AGalaga_USFX_L01GameMode()
@@ -61,5 +62,7 @@ void AGalaga_USFX_L01GameMode::BeginPlay()
 		GeneradorNaves01->generarNave(); 
 		
 	}
+
+	campoAsteroides = GetWorld()->SpawnActor<ACampoAsteroides>(ACampoAsteroides::StaticClass());
 }
 
